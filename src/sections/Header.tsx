@@ -47,8 +47,8 @@ export default function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-40 ${
           isHome
-            ? "mix-blend-difference text-white"
-            : "border-b border-neutral-950 bg-white text-neutral-950"
+            ? "border-b border-white/[0.15] bg-white/[0.10] text-white backdrop-blur-xl"
+            : "border-b border-neutral-950/10 bg-white/75 text-neutral-950 backdrop-blur-xl"
         }`}
       >
         <div className="relative flex h-14 items-center justify-between px-4 md:px-8">

@@ -38,7 +38,7 @@ export default function About() {
           <div>
             {DISCIPLINES.map(([n, t, s]) => (
               <div key={n} className="flex items-baseline gap-4 border-t border-neutral-950 py-4 last:border-b">
-                <span className="micro text-neutral-500">( {n} )</span>
+                <span className="micro text-neutral-500">{n}</span>
                 <span className="font-display text-lg font-semibold uppercase md:text-xl">{t}</span>
                 <span className="micro ml-auto hidden text-neutral-500 sm:block">{s}</span>
               </div>

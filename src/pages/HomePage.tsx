@@ -39,7 +39,7 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/20" />
 
             <span className="micro absolute left-4 top-16 text-white/80 md:left-8 md:top-20">
-              ( {tile.index} )
+              {tile.index}
             </span>
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
@@ -47,9 +47,6 @@ export default function HomePage() {
                 {tile.label}
               </h2>
               <p className="micro mt-4 text-white/75">{tile.sub}</p>
-              <span className="micro mt-8 inline-block border border-white/0 px-6 py-3 text-white opacity-0 transition-all duration-300 group-hover:border-white/70 group-hover:opacity-100">
-                Перейти →
-              </span>
             </div>
           </Link>
         ))}

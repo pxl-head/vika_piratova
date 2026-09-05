@@ -41,7 +41,7 @@ export default function CasePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-4 md:p-8">
           <p className={`micro mb-3 text-white/75 ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>
-            ( {item.index} ) — {item.tagline}
+            {item.index} — {item.tagline}
           </p>
           <h1 className={`display-xl text-5xl text-white md:text-8xl ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>{item.title}</h1>
         </div>

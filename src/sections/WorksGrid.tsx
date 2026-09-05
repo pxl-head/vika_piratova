@@ -49,7 +49,7 @@ export default function WorksGrid({ title = "Работы", note = "Все пр�
                     : "border-neutral-300 text-neutral-950 hover:border-neutral-950"
                 }`}
               >
-                {f.label} <span className={active ? "text-white/50" : "text-neutral-500"}>({count})</span>
+                {f.label} <span className={active ? "text-white/50" : "text-neutral-500"}>{count}</span>
               </button>
             );
           })}
@@ -86,7 +86,7 @@ export default function WorksGrid({ title = "Работы", note = "Все пр�
             />
 
             <span className="micro absolute left-4 top-4 z-10 text-white mix-blend-difference">
-              ( {c.index} )
+              {c.index}
             </span>
 
             <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-16 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 md:p-5">
