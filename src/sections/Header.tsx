@@ -7,7 +7,7 @@ const MENU_ITEMS: { label: string; to: string; note: string }[] = [
   { label: "Works", to: "/works", note: "All projects" },
   { label: "Visual", to: "/visual", note: "Continuous feed of works" },
   { label: "Visual Art", to: "/visual-art", note: "Painting · Illustration · Murals" },
-  { label: "Photo Projects", to: "/photo-video", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON LL · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
+  { label: "Photo Projects", to: "/photo-video", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
   { label: "About", to: "/about", note: "Community & positioning" },
   { label: "Contacts", to: "/contacts", note: "Telegram & socials" },
 ];

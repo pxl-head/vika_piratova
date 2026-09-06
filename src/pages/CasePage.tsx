@@ -51,13 +51,13 @@ export default function CasePage() {
       <div className="grid grid-cols-2 gap-px border-b border-neutral-950 bg-neutral-950 md:grid-cols-4">
         {[
           ["Роль", item.role],
-          ["Команда", item.team.join(" · ")],
+          ["Команда", item.team.join("\n")],
           ["Год", item.year],
           ["Формат", item.field],
         ].map(([label, value]) => (
           <div key={label} className="bg-white p-4 md:p-6">
             <p className="micro mb-2 text-neutral-500">{label}</p>
-            <p className="text-sm font-medium leading-snug">{value}</p>
+            <p className="whitespace-pre-line text-sm font-medium leading-snug">{value}</p>
           </div>
         ))}
       </div>
