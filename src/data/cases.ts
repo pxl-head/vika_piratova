@@ -34,6 +34,28 @@ export interface CaseItem {
 export const TELEGRAM_URL = "https://t.me/pir4tova";
 export const EMAIL = "vpiratova@inbox.ru";
 
+export const INSTAGRAM_LINKS: Record<string, string> = {
+  "@avotarip": "https://www.instagram.com/avotarip?stkn=MWQ1OXN1eXNwMXp2bg%3D%3D&utm_source=qr",
+  "@weirddy.y": "https://www.instagram.com/weirddy.y?stkn=bGp3cWY5MmhjaXk1",
+  "@montan.me": "https://www.instagram.com/montan.me?stkn=bDY3aXpvNWQzajRi",
+  "@pxl_head": "https://www.instagram.com/pxl_head?stkn=MTN5emM4NmR0aWlmbg==",
+  "@endy_marfa": "https://www.instagram.com/endy_marfa?stkn=cHQ4a3k2NHFzaXE3",
+  "@outside.inc": "https://www.instagram.com/outside.inc?stkn=MWU3Ymt3bWs1N2Zqcg==",
+  "@honekss": "https://www.instagram.com/honekss?stkn=ZjM4cXk2Y285aWNl",
+  "@__burrrrgardt__": "https://www.instagram.com/__burrrrgardt__?stkn=Zmp1aGptdWZobjR5",
+  "@__burgarrrrdt__": "https://www.instagram.com/__burrrrgardt__?stkn=Zmp1aGptdWZobjR5",
+  "@go.roshina": "https://www.instagram.com/go.roshina?stkn=emxxZzRlaXNuZHpi",
+  "@babysupaskkiny": "https://www.instagram.com/babysupaskkiny?stkn=eXN0djB6MGlzcXg=",
+  "@rexdeusangelus": "https://www.instagram.com/rexdeusangelus?stkn=YnlhMHY0MXozaXYz",
+  "@lumierenoirrre": "https://www.instagram.com/lumierenoirrre?stkn=cTV3eGNmcmQ5aWs2",
+  "@fffadeintoyou": "https://www.instagram.com/fffadeintoyou?stkn=YmJjbnEzeHZjY3A0",
+  "@pavlovamarieme": "https://www.instagram.com/pavlovamarieme?stkn=cWwyYmU0OW1jNWcx",
+  "@elvnknight": "https://www.instagram.com/elvnknight?stkn=YWJrY2xwanMzZTlr",
+  "@likaaapos": "https://www.instagram.com/likaaapos?stkn=cWl0Zzd5d201dTdy",
+  "@likaaados": "https://www.instagram.com/likaaapos?stkn=cWl0Zzd5d201dTdy",
+  "@ranoobis": "https://www.instagram.com/ranoobis?stkn=MTQ5Y3FrazZvd2Ntdw==",
+};
+
 export const SOCIALS = [
   { label: "Telegram", url: TELEGRAM_URL },
   { label: "Instagram", url: "https://www.instagram.com/avotarip" },

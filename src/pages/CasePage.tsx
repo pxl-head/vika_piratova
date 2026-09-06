@@ -1,7 +1,37 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
-import { CASES } from "@/data/cases";
+import { CASES, INSTAGRAM_LINKS } from "@/data/cases";
 import PageFooter from "@/sections/PageFooter";
+
+const INSTAGRAM_HANDLE_PATTERN = /(@[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)*)/g;
+
+function renderTeamLine(line: string, lineIndex: number) {
+  return line.split(INSTAGRAM_HANDLE_PATTERN).map((part, partIndex) => {
+    const href = INSTAGRAM_LINKS[part];
+    if (!href) return <Fragment key={`${lineIndex}-${partIndex}`}>{part}</Fragment>;
+
+    return (
+      <a
+        key={`${lineIndex}-${partIndex}`}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="underline decoration-neutral-300 underline-offset-2 transition-colors hover:decoration-neutral-950"
+      >
+        {part}
+      </a>
+    );
+  });
+}
+
+function renderTeam(team: string) {
+  return team.split("\n").map((line, lineIndex) => (
+    <Fragment key={lineIndex}>
+      {lineIndex > 0 && <br />}
+      {renderTeamLine(line, lineIndex)}
+    </Fragment>
+  ));
+}
 
 export default function CasePage() {
   const { id } = useParams();
@@ -57,7 +87,9 @@ export default function CasePage() {
         ].map(([label, value]) => (
           <div key={label} className="bg-white p-4 md:p-6">
             <p className="micro mb-2 text-neutral-500">{label}</p>
-            <p className="whitespace-pre-line text-sm font-medium leading-snug">{value}</p>
+            <p className="whitespace-pre-line text-sm font-medium leading-snug">
+              {label === "Команда" ? renderTeam(value) : value}
+            </p>
           </div>
         ))}
       </div>
