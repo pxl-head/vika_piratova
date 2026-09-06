@@ -5,6 +5,18 @@ import PageFooter from "@/sections/PageFooter";
 
 const INSTAGRAM_HANDLE_PATTERN = /(@[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)*)/g;
 
+function galleryRank(caseId: string, src: string) {
+  const value = `${caseId}:${src}`;
+  let hash = 2166136261;
+
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
+}
+
 function renderTeamLine(line: string, lineIndex: number) {
   return line.split(INSTAGRAM_HANDLE_PATTERN).map((part, partIndex) => {
     const href = INSTAGRAM_LINKS[part];
@@ -52,6 +64,12 @@ export default function CasePage() {
 
   const orderedCases = [...CASES].sort((a, b) => Number(a.index) - Number(b.index));
   const next = orderedCases[(orderedCases.findIndex((c) => c.id === item.id) + 1) % orderedCases.length];
+  const gallery = [...item.gallery].sort(
+    (a, b) => galleryRank(item.id, a.src) - galleryRank(item.id, b.src),
+  );
+  const compactGallery = gallery.length <= 3;
+  const desktopGalleryItemWidth =
+    gallery.length === 1 ? "md:w-full" : gallery.length === 2 ? "md:w-1/2" : "md:w-1/3";
 
   return (
     <main id="main" className="bg-white pt-14">
@@ -106,15 +124,16 @@ export default function CasePage() {
         </div>
       </div>
 
-      {/* gallery */}
-      <div className="grid grid-cols-2 gap-px bg-neutral-950 md:grid-cols-3">
-        {item.gallery.map((g, i) => (
-          <div
-            key={i}
-            className={`overflow-hidden ${g.wide ? "col-span-2 aspect-[2/1]" : "aspect-[3/4]"}`}
-          >
-            <img src={g.src} alt={`${item.title} — кадр ${i + 1}`} loading="lazy" className="h-full w-full object-cover" />
-          </div>
+      {/* Natural-ratio masonry: two columns on phones, three on larger screens. */}
+      <div className={compactGallery ? "columns-2 gap-0 md:flex md:items-start" : "columns-2 gap-0 md:columns-3"}>
+        {gallery.map((g, i) => (
+          <img
+            key={g.src}
+            src={g.src}
+            alt={`${item.title} — кадр ${i + 1}`}
+            loading="lazy"
+            className={`block h-auto w-full break-inside-avoid ${compactGallery ? desktopGalleryItemWidth : ""}`}
+          />
         ))}
       </div>
 
