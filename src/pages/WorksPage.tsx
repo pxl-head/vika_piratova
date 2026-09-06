@@ -7,7 +7,7 @@ import type { Category } from "@/data/cases";
 const TITLES: Record<string, { title: string; note: string }> = {
   all: { title: "Работы", note: "Все проекты" },
   art: { title: "Visual Art", note: "Живопись · Иллюстрация · Роспись стен" },
-  photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · Fantasy Of Poison ll · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
+  photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON LL · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
 };
 
 interface WorksPageProps {

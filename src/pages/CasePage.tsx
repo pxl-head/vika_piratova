@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
-import { CASES, TELEGRAM_URL } from "@/data/cases";
+import { CASES } from "@/data/cases";
 import PageFooter from "@/sections/PageFooter";
 
 export default function CasePage() {
@@ -86,23 +86,6 @@ export default function CasePage() {
         ))}
       </div>
 
-      {/* result */}
-      <div className="border-b border-neutral-950 px-4 py-16 md:px-8 md:py-24">
-        <span className="micro mb-8 block text-neutral-500">Результат</span>
-        <blockquote className="display-xl max-w-4xl text-3xl md:text-5xl">«{item.result}»</blockquote>
-        <ul className="mt-10 max-w-xl space-y-0">
-          {item.resultFacts.map((f, i) => (
-            <li key={i} className="flex gap-4 border-t border-neutral-200 py-4 text-sm">
-              <span className="micro pt-0.5 text-neutral-500">0{i + 1}</span>
-              {f}
-            </li>
-          ))}
-        </ul>
-        <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="btn-outline-dark mt-12">
-          Хочу такой проект ↗
-        </a>
-      </div>
-
       {/* video loop */}
       {item.video && (
         <div className="relative h-[80vh] overflow-hidden bg-neutral-950">
@@ -115,9 +98,8 @@ export default function CasePage() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 md:p-8">
-            <span className="micro text-white/85">Процесс в движении</span>
-            <span className="micro text-white/50">loop</span>
+          <div className="absolute inset-x-0 bottom-0 p-4 md:p-8">
+            <span className="micro text-white/85">Бэкстейдж</span>
           </div>
         </div>
       )}
