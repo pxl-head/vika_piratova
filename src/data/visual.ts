@@ -49,4 +49,6 @@ export const VISUAL_IMAGES = [
   "/images/visual/48.jpg",
   "/images/visual/49.jpg",
   "/images/visual/50.jpg",
+  "/images/visual/IMG_0234.webp",
+  "/images/visual/IMG_0235.webp",
 ];
