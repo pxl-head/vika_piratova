@@ -3,11 +3,19 @@ import WorksGrid, { type Filter } from "@/sections/WorksGrid";
 import Manifesto from "@/sections/Manifesto";
 import PageFooter from "@/sections/PageFooter";
 import type { Category } from "@/data/cases";
+import { type Language, useLanguage } from "@/language";
 
-const TITLES: Record<string, { title: string; note: string }> = {
-  all: { title: "Работы", note: "Все проекты" },
-  art: { title: "Visual Art", note: "Живопись · Иллюстрация · Роспись стен" },
-  photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
+const TITLES: Record<Language, Record<string, { title: string; note: string }>> = {
+  ru: {
+    all: { title: "Работы", note: "Все проекты" },
+    art: { title: "Визуальное искусство", note: "Живопись · Иллюстрация · Роспись стен" },
+    photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
+  },
+  en: {
+    all: { title: "Works", note: "All projects" },
+    art: { title: "Visual Art", note: "Painting · Illustration · Murals" },
+    photo: { title: "Photo Projects", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
+  },
 };
 
 interface WorksPageProps {
@@ -16,7 +24,8 @@ interface WorksPageProps {
 
 export default function WorksPage({ preset }: WorksPageProps) {
   const navigate = useNavigate();
-  const meta = TITLES[preset ?? "all"];
+  const { language } = useLanguage();
+  const meta = TITLES[language][preset ?? "all"];
   const initialFilter: Filter = preset ?? "all";
 
   return (
