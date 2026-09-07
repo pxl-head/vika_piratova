@@ -67,6 +67,7 @@ export const VISUAL_IMAGES = [
   "/images/visual/IMG_4285.webp",
   "/images/visual/_MG_5577.webp",
   "/images/visual/_MG_7985.webp",
+  "/images/visual/ANTAGONISM/314B41E9-B8A5-4C4C-939C-0C9A7F6FF98D.webp",
   "/images/visual/TWINS/IMG_4273.webp",
   "/images/visual/TWINS/IMG_4283.webp",
   "/images/visual/TWINS/IMG_4284.webp",

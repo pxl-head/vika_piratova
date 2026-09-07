@@ -60,7 +60,7 @@ function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" 
   };
 
   return (
-    <div className="relative h-[80vh] overflow-hidden bg-neutral-950">
+    <div className="relative overflow-hidden bg-neutral-950">
       <video
         ref={videoRef}
         src={src}
@@ -68,11 +68,11 @@ function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" 
         muted={!soundOn}
         loop
         playsInline
-        className="absolute inset-0 h-full w-full object-cover"
+        className="relative block h-auto w-full object-contain"
       />
       <div className="pointer-events-none absolute inset-0 bg-black/20" />
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-4 md:p-8">
-        <span className="micro text-white/85">{language === "ru" ? "Бэкстейдж" : "Behind the scenes"}</span>
+        <span className="micro text-white/85">Backstage</span>
         <button
           type="button"
           onClick={toggleSound}
@@ -109,9 +109,10 @@ export default function CasePage() {
 
   const orderedCases = [...CASES].sort((a, b) => Number(a.index) - Number(b.index));
   const next = orderedCases[(orderedCases.findIndex((c) => c.id === item.id) + 1) % orderedCases.length];
-  const gallery = [...item.gallery].sort(
-    (a, b) => galleryRank(item.id, a.src) - galleryRank(item.id, b.src),
-  );
+  const twinsGallery = item.id === "twins";
+  const gallery = twinsGallery
+    ? item.gallery
+    : [...item.gallery].sort((a, b) => galleryRank(item.id, a.src) - galleryRank(item.id, b.src));
   const compactGallery = gallery.length <= 3;
   const desktopGalleryItemWidth =
     gallery.length === 1 ? "md:w-full" : gallery.length === 2 ? "md:w-1/2" : "md:w-1/3";
@@ -187,14 +188,22 @@ export default function CasePage() {
       </div>
 
       {/* Natural-ratio masonry: two columns on phones, three on larger screens. */}
-      <div className={compactGallery ? "columns-2 gap-0 md:flex md:items-start" : "columns-2 gap-0 md:columns-3"}>
+      <div
+        className={
+          twinsGallery
+            ? "grid grid-cols-2 gap-0"
+            : compactGallery
+              ? "columns-2 gap-0 md:flex md:items-start"
+              : "columns-2 gap-0 md:columns-3"
+        }
+      >
         {gallery.map((g, i) => (
           <img
             key={g.src}
             src={g.src}
             alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
             loading="lazy"
-            className={`block h-auto w-full break-inside-avoid ${compactGallery ? desktopGalleryItemWidth : ""}`}
+            className={`block h-auto w-full break-inside-avoid ${twinsGallery && g.wide ? "col-span-2" : ""} ${compactGallery ? desktopGalleryItemWidth : ""}`}
           />
         ))}
       </div>

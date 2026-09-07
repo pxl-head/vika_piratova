@@ -16,7 +16,7 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
   caricature: {
     field: "Oil pastel",
     role: "Artist, illustrator",
-    team: ["Vika Piratova"],
+    team: ["@avotarip"],
     tagline: "A viral series of oil pastel caricatures",
     description: ["A series of individual caricatures."],
     result: "The works spread online as profile pictures.",
@@ -25,7 +25,7 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
   academicism: {
     field: "Pencil and gouache",
     role: "Artist",
-    team: ["Vika Piratova"],
+    team: ["@avotarip"],
     tagline: "Academic drawing and oil painting",
     description: ["Academic drawing, anatomy, composition and painting."],
     result: "Academic training creates the freedom to work across different styles.",
@@ -34,7 +34,7 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
   mixed: {
     field: "Mixed media",
     role: "Artist, illustrator",
-    team: ["Vika Piratova"],
+    team: ["@avotarip"],
     tagline: "Mixed‑media portraits",
     description: ["Portraits combining acrylic, markers, text and collage."],
     result: "A signature style that is instantly recognisable in the feed.",
@@ -43,7 +43,7 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
   "custom-space": {
     field: "Graffiti · Spatial design",
     role: "Artist, set designer",
-    team: ["Vika Piratova"],
+    team: ["@avotarip"],
     tagline: "Graffiti and murals",
     description: ["Custom‑designed spaces."],
     result: "The mural turns a space into a point of attraction.",
