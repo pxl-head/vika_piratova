@@ -48,7 +48,7 @@ export default function HomePage() {
     <main id="main" className="relative h-[100svh] w-full overflow-hidden bg-neutral-950">
       <h1 className="sr-only">
         {language === "ru"
-          ? "Vika Piratova — визуальный художник, фотограф и создатель контента"
+          ? "Вика Пиратова — визуальный художник, фотограф и создатель контента"
           : "Vika Piratova — visual artist, photographer & content creator"}
       </h1>
       <div className="grid h-full grid-rows-2 md:grid-cols-2 md:grid-rows-1">

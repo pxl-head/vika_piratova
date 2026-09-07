@@ -60,8 +60,10 @@ export default function CasePage() {
   }, [navigate]);
 
   useEffect(() => {
-    if (item) document.title = `${item.title} — Vika Piratova`;
-  }, [item]);
+    if (item) {
+      document.title = `${item.title} — ${language === "ru" ? "Вика Пиратова" : "Vika Piratova"}`;
+    }
+  }, [item, language]);
 
   if (!item) return <Navigate to="/works" replace />;
 

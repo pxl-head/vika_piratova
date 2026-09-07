@@ -25,7 +25,7 @@ export default function About() {
         <div className="self-start">
           <img src="/images/about.jpg" alt={language === "ru" ? "Вика Пиратова" : "Vika Piratova"} loading="lazy" className="block h-auto w-full" />
           <span className="micro mt-3 block">
-            {language === "ru" ? "Вика Пиратова / Vika Piratova" : "Vika Piratova"}
+            {language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
           </span>
         </div>
 

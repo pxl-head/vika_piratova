@@ -13,13 +13,13 @@ import { type Language, useLanguage } from "@/language";
 
 const ROUTE_TITLES: Record<Language, Record<string, string>> = {
   ru: {
-    "/": "Vika Piratova — Визуальный художник и фотограф",
-    "/works": "Работы — Vika Piratova",
-    "/visual-art": "Визуальное искусство — Vika Piratova",
-    "/photo-video": "Фото и видео — Vika Piratova",
-    "/visual": "Визуал — Vika Piratova",
-    "/about": "Обо мне — Vika Piratova",
-    "/contacts": "Контакты — Vika Piratova",
+    "/": "Вика Пиратова — Визуальный художник и фотограф",
+    "/works": "Работы — Вика Пиратова",
+    "/visual-art": "Визуальное искусство — Вика Пиратова",
+    "/photo-video": "Фото и видео — Вика Пиратова",
+    "/visual": "Визуал — Вика Пиратова",
+    "/about": "Обо мне — Вика Пиратова",
+    "/contacts": "Контакты — Вика Пиратова",
   },
   en: {
     "/": "Vika Piratova — Visual Artist & Photographer",
@@ -42,7 +42,7 @@ function RouteEffects() {
       ROUTE_TITLES[language][pathname] ??
       (pathname.startsWith("/case/")
         ? language === "ru"
-          ? "Проект — Vika Piratova"
+          ? "Проект — Вика Пиратова"
           : "Project — Vika Piratova"
         : ROUTE_TITLES[language]["/"]);
   }, [language, pathname]);

@@ -85,7 +85,7 @@ export default function Header() {
             to="/"
             className="absolute left-1/2 -translate-x-1/2 font-display text-base font-semibold uppercase tracking-[0.25em]"
           >
-            Vika Piratova
+            {language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
           </Link>
 
           <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="micro hidden sm:block">

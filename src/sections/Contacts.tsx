@@ -64,7 +64,9 @@ export default function Contacts() {
       </div>
 
       <div className="flex flex-col gap-2 border-t border-white/20 px-4 py-6 sm:flex-row sm:items-center sm:justify-between md:px-8">
-        <span className="micro text-white/50">© 2026 Vika Piratova</span>
+        <span className="micro text-white/50">
+          © 2026 {language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
+        </span>
         <span className="micro text-white/50">
           {language === "ru"
             ? "Визуальный художник · Фотограф · Создатель контента"
