@@ -8,12 +8,12 @@ const TITLES: Record<Language, Record<string, { title: string; note: string }>> 
   ru: {
     all: { title: "Работы", note: "Все проекты" },
     art: { title: "Визуальное искусство", note: "Живопись · Иллюстрация · Роспись стен" },
-    photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE · FEATHERS · ANTAGONISM · GIRLISH DREAM" },
+    photo: { title: "Фотопроекты", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE · FEATHERS · ANTAGONISM · GIRLISH DREAM · TWINS" },
   },
   en: {
     all: { title: "Works", note: "All projects" },
     art: { title: "Visual Art", note: "Painting · Illustration · Murals" },
-    photo: { title: "Photo Projects", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE · FEATHERS · ANTAGONISM · GIRLISH DREAM" },
+    photo: { title: "Photo Projects", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE · FEATHERS · ANTAGONISM · GIRLISH DREAM · TWINS" },
   },
 };
 

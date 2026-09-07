@@ -200,6 +200,19 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
     result: "The photo project is shaped into a standalone visual story.",
     resultFacts: ["The complete series is available in the gallery"],
   },
+  twins: {
+    field: "Photography",
+    role: "Photographer",
+    team: [
+      "instagram",
+      "@avotarip",
+      "@honekss",
+    ],
+    tagline: "TWINS",
+    description: ["A series of images from the TWINS project."],
+    result: "The photo project is shaped into a standalone visual story.",
+    resultFacts: ["The complete series is available in the gallery"],
+  },
 };
 
 export function getCaseText(item: CaseItem, language: Language): LocalizedCaseText {

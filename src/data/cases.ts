@@ -77,6 +77,7 @@ const tokyoStyle = "/images/projects/TOKYO STYLE";
 const feathers = "/images/projects/FEATHERS";
 const antagonism = "/images/projects/ANTAGONISM";
 const girlishDream = "/images/projects/GIRLISH DREAM";
+const twins = "/images/projects/TWINS";
 
 export const CASES: CaseItem[] = [
   {
@@ -562,6 +563,35 @@ export const CASES: CaseItem[] = [
       { src: `${girlishDream}/IMG_4280.webp` },
       { src: `${girlishDream}/IMG_4281.webp` },
       { src: `${girlishDream}/IMG_4282.webp` },
+    ],
+    result: "Фотопроект собран в отдельную визуальную историю.",
+    resultFacts: ["Полная серия кадров доступна в галерее"],
+  },
+  {
+    id: "twins",
+    index: "16",
+    title: "TWINS",
+    category: "photo",
+    categoryLabel: "Photo Project",
+    field: "Фотография",
+    year: "2026",
+    role: "фотограф",
+    team: [
+      "instagram",
+      "@avotarip",
+      "@honekss",
+    ],
+    cover: `${twins}/IMG_4300.webp`,
+    hover: `${twins}/IMG_4301.webp`,
+    tagline: "TWINS",
+    description: ["Серия кадров из проекта TWINS."],
+    process: [],
+    gallery: [
+      { src: `${twins}/IMG_4300.webp` },
+      { src: `${twins}/IMG_4301.webp` },
+      { src: `${twins}/IMG_4302.webp` },
+      { src: `${twins}/IMG_4303.webp` },
+      { src: `${twins}/IMG_4304.webp`, wide: true },
     ],
     result: "Фотопроект собран в отдельную визуальную историю.",
     resultFacts: ["Полная серия кадров доступна в галерее"],
