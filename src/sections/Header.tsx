@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { SOCIALS, TELEGRAM_URL } from "@/data/cases";
+import { LanguageSwitcher } from "@/i18n";
 import { type Language, useLanguage } from "@/language";
 
 const MENU_ITEMS: Record<Language, { label: string; to: string; note: string }[]> = {
@@ -8,8 +9,6 @@ const MENU_ITEMS: Record<Language, { label: string; to: string; note: string }[]
     { label: "Главная", to: "/", note: "Разделённый экран" },
     { label: "Работы", to: "/works", note: "Все проекты" },
     { label: "Визуал", to: "/visual", note: "Непрерывная лента работ" },
-    { label: "Визуальное искусство", to: "/visual-art", note: "Живопись · Иллюстрация · Роспись" },
-    { label: "Фотопроекты", to: "/photo-video", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
     { label: "Обо мне", to: "/about", note: "Комьюнити и позиционирование" },
     { label: "Контакты", to: "/contacts", note: "Telegram и соцсети" },
   ],
@@ -17,8 +16,6 @@ const MENU_ITEMS: Record<Language, { label: string; to: string; note: string }[]
     { label: "Home", to: "/", note: "Split screen" },
     { label: "Works", to: "/works", note: "All projects" },
     { label: "Visual", to: "/visual", note: "Continuous feed of works" },
-    { label: "Visual Art", to: "/visual-art", note: "Painting · Illustration · Murals" },
-    { label: "Photo Projects", to: "/photo-video", note: "Fantasy Of Poison · MERMAIDS · FANTASY OF POISON II · PSYCHO · PAINTED DOLLS · TEXTURE · CAKE OR FAKE · TOKYO STYLE" },
     { label: "About", to: "/about", note: "Community & positioning" },
     { label: "Contacts", to: "/contacts", note: "Telegram & socials" },
   ],
@@ -151,7 +148,11 @@ export default function Header() {
             ))}
           </div>
         </div>
+
+        {open && <LanguageSwitcher inMenu />}
       </div>
+
+      {isHome && !open && <LanguageSwitcher />}
     </>
   );
 }

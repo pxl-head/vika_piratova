@@ -8,7 +8,6 @@ import CasePage from "@/pages/CasePage";
 import VisualPage from "@/pages/VisualPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactsPage from "@/pages/ContactsPage";
-import { LanguageSwitcher } from "@/i18n";
 import { type Language, useLanguage } from "@/language";
 
 const ROUTE_TITLES: Record<Language, Record<string, string>> = {
@@ -73,7 +72,6 @@ function App() {
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      <LanguageSwitcher />
     </div>
   );
 }
