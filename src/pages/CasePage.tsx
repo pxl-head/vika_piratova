@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router";
 import { CASES, INSTAGRAM_LINKS } from "@/data/cases";
 import { getCaseText } from "@/data/caseTranslations";
@@ -45,6 +45,46 @@ function renderTeam(team: string) {
       {renderTeamLine(line, lineIndex)}
     </Fragment>
   ));
+}
+
+function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [soundOn, setSoundOn] = useState(false);
+
+  const toggleSound = () => {
+    setSoundOn((current) => {
+      const next = !current;
+      if (videoRef.current) videoRef.current.muted = !next;
+      return next;
+    });
+  };
+
+  return (
+    <div className="relative h-[80vh] overflow-hidden bg-neutral-950">
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted={!soundOn}
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-black/20" />
+      <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-4 md:p-8">
+        <span className="micro text-white/85">{language === "ru" ? "Бэкстейдж" : "Behind the scenes"}</span>
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-pressed={soundOn}
+          aria-label={soundOn ? (language === "ru" ? "Выключить звук" : "Turn sound off") : language === "ru" ? "Включить звук" : "Turn sound on"}
+          className="micro border border-white/60 px-3 py-2 text-white transition-colors hover:bg-white hover:text-neutral-950"
+        >
+          {soundOn ? (language === "ru" ? "Звук: вкл" : "Sound: on") : language === "ru" ? "Звук: выкл" : "Sound: off"}
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default function CasePage() {
@@ -103,7 +143,20 @@ export default function CasePage() {
           <p className={`micro mb-3 text-white/75 ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>
             {item.index} — {localized.tagline}
           </p>
-          <h1 className={`display-xl text-5xl text-white md:text-8xl ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>{item.title}</h1>
+        <h1 className={`display-xl text-5xl text-white md:text-8xl ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>
+          {item.projectUrl ? (
+            <a
+              href={item.projectUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-white/60 underline-offset-8 transition-colors hover:decoration-white"
+            >
+              {item.title}
+            </a>
+          ) : (
+            item.title
+          )}
+        </h1>
         </div>
       </div>
 
@@ -148,20 +201,7 @@ export default function CasePage() {
 
       {/* video loop */}
       {item.video && (
-        <div className="relative h-[80vh] overflow-hidden bg-neutral-950">
-          <video
-            src={item.video}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="absolute inset-x-0 bottom-0 p-4 md:p-8">
-            <span className="micro text-white/85">{language === "ru" ? "Бэкстейдж" : "Behind the scenes"}</span>
-          </div>
-        </div>
+        <BackstageVideo src={item.video} language={language} />
       )}
 
       {/* next case */}

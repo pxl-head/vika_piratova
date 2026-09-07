@@ -158,6 +158,48 @@ const ENGLISH_CASES: Record<string, Omit<LocalizedCaseText, "categoryLabel">> = 
     result: "The photo project is shaped into a standalone visual story.",
     resultFacts: ["The complete series is available in the gallery"],
   },
+  feathers: {
+    field: "Photography",
+    role: "Photographer",
+    team: [
+      "Instagram:",
+      "Photo — @avotarip",
+      "Design — @pavlovamarieme",
+      "Model — @honekss",
+      "Video — @pxl_head",
+    ],
+    tagline: "FEATHERS",
+    description: ["A series of images from the FEATHERS project."],
+    result: "The photo project is shaped into a standalone visual story.",
+    resultFacts: ["The complete series is available in the gallery"],
+  },
+  antagonism: {
+    field: "Photography",
+    role: "Photographer",
+    team: [
+      "Instagram:",
+      "Photo / video — @avotarip",
+      "Styling — @rexdeusangelus",
+      "Models: @AVRILGROSSMAN, @elvnknight",
+    ],
+    tagline: "ANTAGONISM",
+    description: ["A series of images from the ANTAGONISM project."],
+    result: "The photo project is shaped into a standalone visual story.",
+    resultFacts: ["The complete series is available in the gallery"],
+  },
+  "girlish-dream": {
+    field: "Photography",
+    role: "Photographer",
+    team: [
+      "instagram:",
+      "Photo — @avotarip",
+      "Secret models",
+    ],
+    tagline: "GIRLISH DREAM",
+    description: ["A series of images from the GIRLISH DREAM project."],
+    result: "The photo project is shaped into a standalone visual story.",
+    resultFacts: ["The complete series is available in the gallery"],
+  },
 };
 
 export function getCaseText(item: CaseItem, language: Language): LocalizedCaseText {

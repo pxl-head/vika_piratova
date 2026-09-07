@@ -14,6 +14,7 @@ export interface CaseItem {
   id: string;
   index: string;
   title: string;
+  projectUrl?: string;
   category: Category;
   categoryLabel: string;
   field: string;
@@ -51,6 +52,7 @@ export const INSTAGRAM_LINKS: Record<string, string> = {
   "@fffadeintoyou": "https://www.instagram.com/fffadeintoyou?stkn=YmJjbnEzeHZjY3A0",
   "@pavlovamarieme": "https://www.instagram.com/pavlovamarieme?stkn=cWwyYmU0OW1jNWcx",
   "@elvnknight": "https://www.instagram.com/elvnknight?stkn=YWJrY2xwanMzZTlr",
+  "@AVRILGROSSMAN": "https://www.instagram.com/avrilgrossman",
   "@likaaapos": "https://www.instagram.com/likaaapos?stkn=cWl0Zzd5d201dTdy",
   "@likaaados": "https://www.instagram.com/likaaapos?stkn=cWl0Zzd5d201dTdy",
   "@ranoobis": "https://www.instagram.com/ranoobis?stkn=MTQ5Y3FrazZvd2Ntdw==",
@@ -72,6 +74,9 @@ const paintedDolls = "/images/projects/PAINTED DOLLS";
 const texture = "/images/projects/TEXTURE";
 const cakeOrFake = "/images/projects/CAKE OR FAKE";
 const tokyoStyle = "/images/projects/TOKYO STYLE";
+const feathers = "/images/projects/FEATHERS";
+const antagonism = "/images/projects/ANTAGONISM";
+const girlishDream = "/images/projects/GIRLISH DREAM";
 
 export const CASES: CaseItem[] = [
   {
@@ -446,6 +451,117 @@ export const CASES: CaseItem[] = [
       { src: `${tokyoStyle}/Обложка 1.webp`, wide: true },
       { src: `${tokyoStyle}/Обложка 2.webp`, wide: true },
       { src: `${tokyoStyle}/IMG_0287.webp`, wide: true },
+    ],
+    result: "Фотопроект собран в отдельную визуальную историю.",
+    resultFacts: ["Полная серия кадров доступна в галерее"],
+  },
+  {
+    id: "feathers",
+    index: "13",
+    title: "FEATHERS",
+    projectUrl: "https://start.hsedesign.ru/project/fea-d18f3d2b84f4410ea55351eb5de6e138",
+    category: "photo",
+    categoryLabel: "Photo Project",
+    field: "Фотография",
+    year: "2026",
+    role: "фотограф",
+    team: [
+      "Instagram:",
+      "Фото - @avotarip",
+      "Дизайн - @pavlovamarieme",
+      "Модель - @honekss",
+      "Видео - @pxl_head",
+    ],
+    cover: `${feathers}/Обложка 1.webp`,
+    hover: `${feathers}/Обложка 2.webp`,
+    tagline: "FEATHERS",
+    description: ["Серия кадров из проекта FEATHERS."],
+    process: [],
+    gallery: [
+      { src: `${feathers}/Обложка 1.webp` },
+      { src: `${feathers}/Обложка 2.webp` },
+      { src: `${feathers}/IMG_4264.webp` },
+      { src: `${feathers}/IMG_4265.webp` },
+      { src: `${feathers}/IMG_4266.webp` },
+      { src: `${feathers}/IMG_4268.webp` },
+      { src: `${feathers}/IMG_4269.webp` },
+      { src: `${feathers}/IMG_4270.webp` },
+      { src: `${feathers}/IMG_4271.webp` },
+      { src: `${feathers}/IMG_4272.webp` },
+    ],
+    result: "Фотопроект собран в отдельную визуальную историю.",
+    resultFacts: ["Полная серия кадров доступна в галерее"],
+    video: `${feathers}/backstage.mp4`,
+  },
+  {
+    id: "antagonism",
+    index: "14",
+    title: "ANTAGONISM",
+    category: "photo",
+    categoryLabel: "Photo Project",
+    field: "Фотография",
+    year: "2025",
+    role: "фотограф",
+    team: [
+      "Instagram:",
+      "Фото / видео - @avotarip",
+      "Стилизация - @rexdeusangelus",
+      "Модели: @AVRILGROSSMAN , @elvnknight",
+    ],
+    cover: `${antagonism}/Обложка 1.webp`,
+    hover: `${antagonism}/Обложка 2.webp`,
+    tagline: "ANTAGONISM",
+    description: ["Серия кадров из проекта ANTAGONISM."],
+    process: [],
+    gallery: [
+      { src: `${antagonism}/Обложка 1.webp` },
+      { src: `${antagonism}/Обложка 2.webp` },
+      { src: `${antagonism}/314B41E9-B8A5-4C4C-939C-0C9A7F6FF98D.webp` },
+      { src: `${antagonism}/IMG_1227.webp` },
+      { src: `${antagonism}/IMG_1238.webp` },
+      { src: `${antagonism}/IMG_1240.webp` },
+      { src: `${antagonism}/IMG_1242.webp` },
+      { src: `${antagonism}/IMG_5977.webp` },
+      { src: `${antagonism}/_MG_7589.webp` },
+      { src: `${antagonism}/_MG_7616.webp` },
+      { src: `${antagonism}/_MG_7633.webp` },
+      { src: `${antagonism}/_MG_7707.webp` },
+      { src: `${antagonism}/_MG_7735.webp` },
+    ],
+    result: "Фотопроект собран в отдельную визуальную историю.",
+    resultFacts: ["Полная серия кадров доступна в галерее"],
+    video: `${antagonism}/backstage.mp4`,
+  },
+  {
+    id: "girlish-dream",
+    index: "15",
+    title: "GIRLISH DREAM",
+    category: "photo",
+    categoryLabel: "Photo Project",
+    field: "Фотография",
+    year: "2025",
+    role: "фотограф",
+    team: [
+      "instagram:",
+      "Фото - @avotarip",
+      "Секретные модели",
+    ],
+    cover: `${girlishDream}/Обложка 1.webp`,
+    hover: `${girlishDream}/Обложка 2.webp`,
+    tagline: "GIRLISH DREAM",
+    description: ["Серия кадров из проекта GIRLISH DREAM."],
+    process: [],
+    gallery: [
+      { src: `${girlishDream}/Обложка 1.webp` },
+      { src: `${girlishDream}/Обложка 2.webp` },
+      { src: `${girlishDream}/IMG_4274.webp` },
+      { src: `${girlishDream}/IMG_4275.webp` },
+      { src: `${girlishDream}/IMG_4276.webp` },
+      { src: `${girlishDream}/IMG_4277.webp` },
+      { src: `${girlishDream}/IMG_4278.webp` },
+      { src: `${girlishDream}/IMG_4280.webp` },
+      { src: `${girlishDream}/IMG_4281.webp` },
+      { src: `${girlishDream}/IMG_4282.webp` },
     ],
     result: "Фотопроект собран в отдельную визуальную историю.",
     resultFacts: ["Полная серия кадров доступна в галерее"],
