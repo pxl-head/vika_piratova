@@ -6,8 +6,8 @@ export default function Contacts() {
   const { language } = useLanguage();
 
   return (
-    <footer id="contacts" className="scroll-mt-14 bg-neutral-950 text-white">
-      <div className="px-4 pb-16 pt-20 md:px-8 md:pt-28">
+    <footer id="contacts" className="flex min-h-[calc(100svh-3.5rem)] scroll-mt-14 flex-col bg-neutral-950 text-white">
+      <div className="flex-1 px-4 pb-16 pt-20 md:px-8 md:pt-28">
         <div className="mb-8">
           <span className="micro text-white/60">
             {language === "ru" ? "Контакты и соцсети" : "Contacts & socials"}
@@ -15,7 +15,7 @@ export default function Contacts() {
         </div>
 
         <h2 className="display-xl max-w-5xl text-5xl md:text-8xl">
-          {language === "ru" ? "Давайте сотворим что-то стоящее" : "Let’s create something worth remembering"}
+          {language === "ru" ? "Давайте сотворим что‑то стоящее" : "Let’s create something worth remembering"}
         </h2>
 
         <p className="mt-8 max-w-md text-sm leading-relaxed text-white/70">

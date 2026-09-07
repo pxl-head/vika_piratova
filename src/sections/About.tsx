@@ -3,8 +3,8 @@ import { useLanguage } from "@/language";
 const DISCIPLINES = [
   ["01", "Живопись и иллюстрация", "Масло · пастель · графика"],
   ["02", "Фото и видео", "Мода · редакционная съёмка · закулисье"],
-  ["03", "Сет-дизайн", "Роспись · оформление пространств"],
-  ["04", "Арт-дирекшн", "Концепт · мудборды · продакшен"],
+  ["03", "Сет‑дизайн", "Роспись · оформление пространств"],
+  ["04", "Арт‑дирекшн", "Концепт · мудборды · продакшен"],
 ];
 
 export default function About() {
@@ -30,7 +30,7 @@ export default function About() {
         </div>
 
         <div className="min-w-0">
-          <h2 className="display-xl break-words text-4xl md:text-6xl">
+          <h2 className="display-xl text-[clamp(1.5rem,7.5vw,2.25rem)] md:text-[clamp(1.5rem,3.2vw,3rem)]">
             {language === "ru" ? "ФОТОГРАФ & МУЛЬТИДИСЦИПЛИНАРНЫЙ ХУДОЖНИК" : "PHOTOGRAPHER & MULTIDISCIPLINARY ARTIST"}
           </h2>
           <p className="mt-8 max-w-lg text-sm leading-relaxed text-neutral-600">

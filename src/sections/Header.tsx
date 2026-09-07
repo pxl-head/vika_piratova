@@ -114,20 +114,20 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="flex h-[calc(100%-3.5rem-7rem)] flex-col justify-center px-4 md:px-8">
+        <nav className="flex h-[calc(100%-3.5rem-10rem)] flex-col justify-center overflow-y-auto px-4 py-4 md:px-8 [@media(max-height:700px)]:justify-start">
           {menuItems.map((item, i) => (
             <Link
               key={item.to}
               to={item.to}
               onClick={() => setOpen(false)}
-              className={`group flex items-baseline gap-4 border-b border-white/10 py-4 text-left transition-all duration-500 md:gap-8 md:py-5 ${
+              className={`group flex items-baseline gap-4 border-b border-white/10 py-4 text-left transition-all duration-500 md:gap-8 md:py-5 [@media(max-height:700px)]:py-2 ${
                 open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
               }`}
               style={{ transitionDelay: open ? `${120 + i * 70}ms` : "0ms" }}
               aria-current={pathname === item.to ? "page" : undefined}
             >
               <span className="micro w-8 text-white/50">0{i + 1}</span>
-              <span className="display-xl text-4xl transition-colors group-hover:text-white/60 md:text-6xl">
+              <span className="display-xl text-4xl transition-colors group-hover:text-white/60 md:text-6xl [@media(max-height:700px)]:text-2xl">
                 {item.label}
               </span>
               <span className="micro ml-auto hidden text-white/50 md:block">{item.note}</span>
@@ -135,7 +135,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="absolute inset-x-0 bottom-0 flex h-28 flex-col justify-center gap-3 px-4 md:px-8">
+        <div className="absolute inset-x-0 bottom-12 flex h-28 flex-col justify-center gap-3 px-4 md:px-8">
           <span className="micro text-white/50">{language === "ru" ? "Соцсети" : "Socials"}</span>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             {SOCIALS.map((s) => (

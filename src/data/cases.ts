@@ -162,7 +162,7 @@ export const CASES: CaseItem[] = [
     categoryLabel: "Visual Art",
     field: "Граффити · Оформление пространств",
     year: "2026",
-    role: "Художник, сет-дизайнер",
+    role: "Художник, сет‑дизайнер",
     team: ["Вика Пиратова"],
     cover: "/images/art/custom-space/cover.jpg",
     hover: "/images/art/custom-space/hover.jpg",
@@ -186,7 +186,7 @@ export const CASES: CaseItem[] = [
     categoryLabel: "Photo Project",
     field: "Фотография",
     year: "2026",
-    role: "Арт-директор",
+    role: "Арт‑директор",
     team: [
       "instagram:",
       "Фото - @weirddy.y",
@@ -222,7 +222,7 @@ export const CASES: CaseItem[] = [
     categoryLabel: "Photo Project",
     field: "Фотография",
     year: "2025",
-    role: "Арт-директор",
+    role: "Арт‑директор",
     team: [
       "instagram:",
       "Фото - @avotarip",
@@ -254,7 +254,7 @@ export const CASES: CaseItem[] = [
     categoryLabel: "Photo Project",
     field: "Фотография",
     year: "2026",
-    role: "Арт-директор",
+    role: "Арт‑директор",
     team: [
       "instagram:",
       "Фото - @weirddy.y , @pxl_head",
