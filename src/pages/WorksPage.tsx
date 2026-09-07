@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import WorksGrid, { type Filter } from "@/sections/WorksGrid";
-import Manifesto from "@/sections/Manifesto";
 import PageFooter from "@/sections/PageFooter";
 import type { Category } from "@/data/cases";
 import { type Language, useLanguage } from "@/language";
@@ -37,7 +36,6 @@ export default function WorksPage({ preset }: WorksPageProps) {
         initialFilter={initialFilter}
         onSelectCase={(c) => navigate(`/case/${c.id}`)}
       />
-      <Manifesto />
       <PageFooter />
     </main>
   );

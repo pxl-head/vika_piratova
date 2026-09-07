@@ -36,12 +36,12 @@ export default function About() {
           <p className="mt-8 max-w-lg text-sm leading-relaxed text-neutral-600">
             {language === "ru"
               ? "Привет, я Вика Пиратова мне 18 лет. Я люблю творчество и вся моя жизнь связана с ним. В средней школе я закончила ДШИ, а выпустилась я в 11 классе из гимназии при РГУ им. Н.А. Косыгина. Сейчас я продолжаю активно учиться в этой сфере."
-              : "Hi, I’m Vika Piratova, I’m 18 years old. I love creating, and my whole life is connected to it. I completed art school while studying at secondary school, and graduated from the gymnasium affiliated with Kosygin Russian State University after the 11th grade. I continue to actively develop in this field."}
+              : "Hi, I’m Vika Piratova. Creativity has always been at the core of everything I do. Having completed a classical art school background and specialized studies affiliated with Kosygin Russian State University, I continue to expand my practice across different creative disciplines."}
           </p>
           <p className="mt-4 max-w-lg text-sm leading-relaxed text-neutral-600">
             {language === "ru"
               ? "В течение своей жизни я собрала вокруг себя невероятно интересных и талантливых людей, которые творят со мной. Мы делаем крутые проекты, коллаборации и развиваемся в разных творческих сферах, дополняя друг друга. Моя жизнь очень насыщенная благодаря творчеству, и я хочу, чтоб мои работы вдохновляли людей."
-              : "Over the years I have brought together an incredible circle of interesting and talented people who create alongside me. We make ambitious projects, collaborate and grow across different creative fields, complementing one another. Creativity makes my life incredibly rich, and I want my work to inspire people."}
+              : "I thrive on collaboration and have built a strong network of talented creators. Together, we work on ambitious projects, combining our strengths across various mediums. My goal is to create compelling visual work that inspires and connects with people."}
           </p>
         </div>
       </div>
