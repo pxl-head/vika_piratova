@@ -1,4 +1,4 @@
-const PXL_HEAD_SITE_URL = "https://t.me/@pxl_head";
+const PXL_HEAD_SITE_URL = "https://t.me/pxl_head";
 
 interface SiteCreditProps {
   className?: string;
