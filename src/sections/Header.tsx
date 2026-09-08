@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { SOCIALS, TELEGRAM_URL } from "@/data/cases";
 import { LanguageSwitcher } from "@/i18n";
 import { type Language, useLanguage } from "@/language";
+import SiteCredit from "@/sections/SiteCredit";
 
 const MENU_ITEMS: Record<Language, { label: string; to: string; note: string }[]> = {
   ru: [
@@ -147,6 +148,7 @@ export default function Header() {
               </a>
             ))}
           </div>
+          <SiteCredit dark />
         </div>
 
         {open && <LanguageSwitcher inMenu />}

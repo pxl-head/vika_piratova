@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { type Language, useLanguage } from "@/language";
+import SiteCredit from "@/sections/SiteCredit";
 
 const TILES: Record<Language, { to: string; index: string; label: string; sub: string; img: string; alt: string }[]> = {
   ru: [
@@ -81,13 +82,16 @@ export default function HomePage() {
       </div>
 
       {/* bottom strip */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/70 to-transparent pb-4 pl-32 pr-4 pt-10 md:pl-40 md:pr-8">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col justify-end gap-1 bg-gradient-to-t from-black/70 to-transparent pb-4 pl-32 pr-4 pt-10 sm:flex-row sm:items-end sm:justify-between md:pl-40 md:pr-8">
         <span className="micro text-white/70">
           {language === "ru"
             ? "Визуальный художник · Фотограф · Создатель контента"
             : "Visual Artist · Photographer · Content Creator"}
         </span>
-        <span className="micro hidden text-white/70 sm:block">© 2026</span>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          <SiteCredit dark className="pointer-events-auto" />
+          <span className="micro hidden text-white/70 sm:block">© 2026</span>
+        </div>
       </div>
     </main>
   );
