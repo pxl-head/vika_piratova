@@ -1,4 +1,4 @@
-const PXL_HEAD_SITE_URL = "https://pxl-head-portfolio.pxl-head.chatgpt.site";
+const PXL_HEAD_SITE_URL = "https://t.me/@pxl_head";
 
 interface SiteCreditProps {
   className?: string;
