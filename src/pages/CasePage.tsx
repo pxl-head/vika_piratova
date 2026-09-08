@@ -110,7 +110,8 @@ export default function CasePage() {
   const orderedCases = [...CASES].sort((a, b) => Number(a.index) - Number(b.index));
   const next = orderedCases[(orderedCases.findIndex((c) => c.id === item.id) + 1) % orderedCases.length];
   const twinsGallery = item.id === "twins";
-  const gallery = twinsGallery
+  const mermaidsGallery = item.id === "mermaids";
+  const gallery = twinsGallery || mermaidsGallery
     ? item.gallery
     : [...item.gallery].sort((a, b) => galleryRank(item.id, a.src) - galleryRank(item.id, b.src));
   const compactGallery = gallery.length <= 3;
@@ -190,7 +191,9 @@ export default function CasePage() {
       {/* Natural-ratio masonry: two columns on phones, three on larger screens. */}
       <div
         className={
-          twinsGallery
+          mermaidsGallery
+            ? "grid grid-cols-2 gap-px bg-neutral-950 md:grid-cols-3"
+            : twinsGallery
             ? "grid grid-cols-2 gap-0"
             : compactGallery
               ? "columns-2 gap-0 md:flex md:items-start"
@@ -198,13 +201,27 @@ export default function CasePage() {
         }
       >
         {gallery.map((g, i) => (
-          <img
-            key={g.src}
-            src={g.src}
-            alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
-            loading="lazy"
-            className={`block h-auto w-full break-inside-avoid ${twinsGallery && g.wide ? "col-span-2" : ""} ${compactGallery ? desktopGalleryItemWidth : ""}`}
-          />
+          mermaidsGallery ? (
+            <div
+              key={g.src}
+              className={`overflow-hidden ${g.wide ? "col-span-2 aspect-[2/1]" : "aspect-[3/4]"}`}
+            >
+              <img
+                src={g.src}
+                alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ) : (
+            <img
+              key={g.src}
+              src={g.src}
+              alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
+              loading="lazy"
+              className={`block h-auto w-full break-inside-avoid ${twinsGallery && g.wide ? "col-span-2" : ""} ${compactGallery ? desktopGalleryItemWidth : ""}`}
+            />
+          )
         ))}
       </div>
 
