@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && vite build --base=/vika_piratova/ && node scripts/prepare-github-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
