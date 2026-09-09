@@ -50,10 +50,10 @@ async function mapWithConcurrency(items, worker) {
 
 async function getDimensions(file) {
   const { stdout } = await execFileAsync("identify", [
-    file,
     "-auto-orient",
     "-format",
     "%w %h",
+    file,
   ]);
   const [width, height] = stdout.trim().split(/\s+/).map(Number);
   return { width, height };
