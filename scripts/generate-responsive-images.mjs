@@ -49,12 +49,11 @@ async function mapWithConcurrency(items, worker) {
 }
 
 async function getDimensions(file) {
-  const { stdout } = await execFileAsync("magick", [
+  const { stdout } = await execFileAsync("identify", [
     file,
     "-auto-orient",
     "-format",
     "%w %h",
-    "info:",
   ]);
   const [width, height] = stdout.trim().split(/\s+/).map(Number);
   return { width, height };
@@ -73,7 +72,7 @@ async function generateVariant(source, destination, width) {
 
   if (destinationIsCurrent) return;
 
-  await execFileAsync("magick", [
+  await execFileAsync("convert", [
     source,
     "-auto-orient",
     "-resize",
