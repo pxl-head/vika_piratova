@@ -1,6 +1,7 @@
 import { VISUAL_IMAGES } from "@/data/visual";
 import PageFooter from "@/sections/PageFooter";
 import { useLanguage } from "@/language";
+import { responsiveImageProps } from "@/lib/responsiveImage";
 
 export default function VisualPage() {
   const { language } = useLanguage();
@@ -27,13 +28,14 @@ export default function VisualPage() {
         {VISUAL_IMAGES.map((src, i) => (
           <img
             key={src}
-            src={src}
+            {...responsiveImageProps(src, "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw")}
             alt={
               language === "ru"
                 ? `Работа ${i + 1} из ленты «Визуал»`
                 : `Work ${i + 1} from the Visual feed`
             }
             loading="lazy"
+            decoding="async"
             className="block w-full break-inside-avoid"
           />
         ))}

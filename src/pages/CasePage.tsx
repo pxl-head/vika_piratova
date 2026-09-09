@@ -4,6 +4,7 @@ import { CASES, INSTAGRAM_LINKS } from "@/data/cases";
 import { getCaseText } from "@/data/caseTranslations";
 import PageFooter from "@/sections/PageFooter";
 import { useLanguage } from "@/language";
+import { responsiveImageProps } from "@/lib/responsiveImage";
 
 const INSTAGRAM_HANDLE_PATTERN = /(@[A-Za-z0-9_]+(?:\.[A-Za-z0-9_]+)*)/g;
 
@@ -47,9 +48,57 @@ function renderTeam(team: string) {
   ));
 }
 
-function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" }) {
+function BackstageVideo({ src, poster, language }: { src: string; poster: string; language: "ru" | "en" }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [soundOn, setSoundOn] = useState(false);
+  const [nearViewport, setNearViewport] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setPrefersReducedMotion(motionQuery.matches);
+    updateMotionPreference();
+    motionQuery.addEventListener("change", updateMotionPreference);
+    return () => motionQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setNearViewport(entry.isIntersecting),
+      { rootMargin: "400px 0px", threshold: 0.01 },
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!nearViewport || prefersReducedMotion) {
+      video.pause();
+      return;
+    }
+
+    void video.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+  }, [nearViewport, prefersReducedMotion]);
+
+  const togglePlayback = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      void video.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      video.pause();
+      setPlaying(false);
+    }
+  };
 
   const toggleSound = () => {
     setSoundOn((current) => {
@@ -60,28 +109,41 @@ function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" 
   };
 
   return (
-    <div className="relative overflow-hidden bg-neutral-950">
+    <div ref={containerRef} className="relative overflow-hidden bg-neutral-950">
       <video
         ref={videoRef}
-        src={src}
-        autoPlay
+        src={nearViewport ? src : undefined}
+        poster={poster}
+        preload="none"
         muted={!soundOn}
         loop
         playsInline
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
         className="relative block h-auto w-full object-contain"
       />
       <div className="pointer-events-none absolute inset-0 bg-black/20" />
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-4 p-4 md:p-8">
         <span className="micro text-white/85">Backstage</span>
-        <button
-          type="button"
-          onClick={toggleSound}
-          aria-pressed={soundOn}
-          aria-label={soundOn ? (language === "ru" ? "Выключить звук" : "Turn sound off") : language === "ru" ? "Включить звук" : "Turn sound on"}
-          className="micro border border-white/60 px-3 py-2 text-white transition-colors hover:bg-white hover:text-neutral-950"
-        >
-          {soundOn ? (language === "ru" ? "Звук: вкл" : "Sound: on") : language === "ru" ? "Звук: выкл" : "Sound: off"}
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={togglePlayback}
+            aria-pressed={playing}
+            className="micro border border-white/60 px-3 py-2 text-white transition-colors hover:bg-white hover:text-neutral-950"
+          >
+            {playing ? (language === "ru" ? "Пауза" : "Pause") : language === "ru" ? "Смотреть" : "Play"}
+          </button>
+          <button
+            type="button"
+            onClick={toggleSound}
+            aria-pressed={soundOn}
+            aria-label={soundOn ? (language === "ru" ? "Выключить звук" : "Turn sound off") : language === "ru" ? "Включить звук" : "Turn sound on"}
+            className="micro border border-white/60 px-3 py-2 text-white transition-colors hover:bg-white hover:text-neutral-950"
+          >
+            {soundOn ? (language === "ru" ? "Звук: вкл" : "Sound: on") : language === "ru" ? "Звук: выкл" : "Sound: off"}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -132,7 +194,12 @@ export default function CasePage() {
 
       {/* hero */}
       <div className="relative h-[68vh] overflow-hidden md:h-[78vh]">
-        <img src={item.cover} alt={item.title} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+        <img
+          {...responsiveImageProps(item.cover, "100vw")}
+          alt={item.title}
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-4 md:p-8">
           <p className={`micro mb-3 text-white/75 ${item.id === "fantasy-of-poison-ll" ? "normal-case" : ""}`}>
@@ -200,18 +267,29 @@ export default function CasePage() {
               className={`overflow-hidden ${g.wide ? "col-span-2 aspect-[2/1]" : "aspect-[3/4]"}`}
             >
               <img
-                src={g.src}
+                {...responsiveImageProps(g.src, "(min-width: 768px) 33vw, 50vw")}
                 alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
                 loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             </div>
           ) : (
             <img
               key={g.src}
-              src={g.src}
+              {...responsiveImageProps(
+                g.src,
+                compactGallery
+                  ? gallery.length === 1
+                    ? "100vw"
+                    : gallery.length === 2
+                      ? "50vw"
+                      : "(min-width: 768px) 33vw, 50vw"
+                  : "(min-width: 768px) 33vw, 50vw",
+              )}
               alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
               loading="lazy"
+              decoding="async"
               className={`block h-auto w-full break-inside-avoid ${twinsGallery && g.wide ? "col-span-2" : ""} ${compactGallery ? desktopGalleryItemWidth : ""}`}
             />
           )
@@ -247,7 +325,13 @@ export default function CasePage() {
             <div className="grid gap-8 sm:grid-cols-2">
               {item.process.map((shot) => (
                 <figure key={shot.img}>
-                  <img src={shot.img} alt={shot.caption} loading="lazy" className="block h-auto w-full" />
+                  <img
+                    {...responsiveImageProps(shot.img, "(min-width: 768px) 25vw, 100vw")}
+                    alt={shot.caption}
+                    loading="lazy"
+                    decoding="async"
+                    className="block h-auto w-full"
+                  />
                   <figcaption className="micro mt-3 text-neutral-500">{shot.caption}</figcaption>
                 </figure>
               ))}
@@ -258,7 +342,7 @@ export default function CasePage() {
 
       {/* video loop */}
       {item.video && (
-        <BackstageVideo src={item.video} language={language} />
+        <BackstageVideo src={item.video} poster={item.cover} language={language} />
       )}
 
       {/* next case */}

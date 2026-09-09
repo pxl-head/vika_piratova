@@ -8,42 +8,107 @@ import CasePage from "@/pages/CasePage";
 import VisualPage from "@/pages/VisualPage";
 import AboutPage from "@/pages/AboutPage";
 import ContactsPage from "@/pages/ContactsPage";
+import { CASES } from "@/data/cases";
+import { getCaseText } from "@/data/caseTranslations";
 import { type Language, useLanguage } from "@/language";
 
-const ROUTE_TITLES: Record<Language, Record<string, string>> = {
+interface RouteMetadata {
+  title: string;
+  description: string;
+}
+
+const ROUTE_METADATA: Record<Language, Record<string, RouteMetadata>> = {
   ru: {
-    "/": "Вика Пиратова — Визуальный художник и фотограф",
-    "/works": "Работы — Вика Пиратова",
-    "/visual-art": "Визуальное искусство — Вика Пиратова",
-    "/photo-video": "Фото и видео — Вика Пиратова",
-    "/visual": "Визуал — Вика Пиратова",
-    "/about": "Обо мне — Вика Пиратова",
-    "/contacts": "Контакты — Вика Пиратова",
+    "/": {
+      title: "Вика Пиратова — Визуальный художник и фотограф",
+      description: "Вика Пиратова — визуальный художник, фотограф и контент-креатор. Вирусный арт, масштабная роспись, концептуальные фото и видео.",
+    },
+    "/works": {
+      title: "Работы — Вика Пиратова",
+      description: "Портфолио Вики Пиратовой: визуальное искусство, фотопроекты и видео.",
+    },
+    "/visual-art": {
+      title: "Визуальное искусство — Вика Пиратова",
+      description: "Живопись, иллюстрация и оформление пространств Вики Пиратовой.",
+    },
+    "/photo-video": {
+      title: "Фото и видео — Вика Пиратова",
+      description: "Концептуальные фотопроекты и видео Вики Пиратовой.",
+    },
+    "/visual": {
+      title: "Визуал — Вика Пиратова",
+      description: "Непрерывная визуальная лента работ Вики Пиратовой.",
+    },
+    "/about": {
+      title: "Обо мне — Вика Пиратова",
+      description: "О Вике Пиратовой — фотографе и мультидисциплинарном художнике.",
+    },
+    "/contacts": {
+      title: "Контакты — Вика Пиратова",
+      description: "Контакты Вики Пиратовой для съёмок, проектов и творческих коллабораций.",
+    },
   },
   en: {
-    "/": "Vika Piratova — Visual Artist & Photographer",
-    "/works": "Works — Vika Piratova",
-    "/visual-art": "Visual Art — Vika Piratova",
-    "/photo-video": "Photo & Video — Vika Piratova",
-    "/visual": "Visual — Vika Piratova",
-    "/about": "About — Vika Piratova",
-    "/contacts": "Contacts — Vika Piratova",
+    "/": {
+      title: "Vika Piratova — Visual Artist & Photographer",
+      description: "Vika Piratova is a visual artist, photographer and content creator working across art, conceptual photography and video.",
+    },
+    "/works": {
+      title: "Works — Vika Piratova",
+      description: "Vika Piratova's portfolio of visual art, photo projects and video.",
+    },
+    "/visual-art": {
+      title: "Visual Art — Vika Piratova",
+      description: "Painting, illustration and spatial art by Vika Piratova.",
+    },
+    "/photo-video": {
+      title: "Photo & Video — Vika Piratova",
+      description: "Conceptual photo projects and video by Vika Piratova.",
+    },
+    "/visual": {
+      title: "Visual — Vika Piratova",
+      description: "A continuous visual feed of work by Vika Piratova.",
+    },
+    "/about": {
+      title: "About — Vika Piratova",
+      description: "About Vika Piratova, photographer and multidisciplinary artist.",
+    },
+    "/contacts": {
+      title: "Contacts — Vika Piratova",
+      description: "Contact Vika Piratova for shoots, projects and creative collaborations.",
+    },
   },
 };
+
+function normalizePathname(pathname: string) {
+  return pathname === "/" ? pathname : pathname.replace(/\/+$/, "");
+}
+
+function getRouteMetadata(pathname: string, language: Language): RouteMetadata {
+  const normalizedPathname = normalizePathname(pathname);
+  const caseId = normalizedPathname.match(/^\/case\/([^/]+)$/)?.[1];
+  const item = caseId ? CASES.find((candidate) => candidate.id === caseId) : undefined;
+
+  if (item) {
+    const localized = getCaseText(item, language);
+    return {
+      title: `${item.title} — ${language === "ru" ? "Вика Пиратова" : "Vika Piratova"}`,
+      description: localized.description.join(" "),
+    };
+  }
+
+  return ROUTE_METADATA[language][normalizedPathname] ?? ROUTE_METADATA[language]["/"];
+}
 
 function RouteEffects() {
   const { pathname } = useLocation();
   const { language } = useLanguage();
 
   useEffect(() => {
+    const metadata = getRouteMetadata(pathname, language);
     window.scrollTo(0, 0);
-    document.title =
-      ROUTE_TITLES[language][pathname] ??
-      (pathname.startsWith("/case/")
-        ? language === "ru"
-          ? "Проект — Вика Пиратова"
-          : "Project — Vika Piratova"
-        : ROUTE_TITLES[language]["/"]);
+    document.title = metadata.title;
+    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", metadata.description);
   }, [language, pathname]);
   return null;
 }

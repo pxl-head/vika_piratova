@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:pages": "tsc -b && vite build --base=/vika_piratova/ && node scripts/prepare-github-pages.mjs",
+    "build:pages": "npm run images:generate && tsc -b && vite build --base=/vika_piratova/ && node scripts/prepare-github-pages.mjs",
+    "images:generate": "node scripts/generate-responsive-images.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -1,4 +1,5 @@
 import { useLanguage } from "@/language";
+import { responsiveImageProps } from "@/lib/responsiveImage";
 
 const DISCIPLINES = [
   ["01", "Живопись и иллюстрация", "Масло · пастель · графика"],
@@ -23,7 +24,13 @@ export default function About() {
     <section id="about" className="scroll-mt-14 border-t border-neutral-950 bg-white">
       <div className="grid gap-10 px-4 pb-12 pt-20 md:grid-cols-2 md:gap-16 md:px-8 md:pb-16 md:pt-20">
         <div className="self-start">
-          <img src="/images/about.jpg" alt={language === "ru" ? "Вика Пиратова" : "Vika Piratova"} loading="lazy" className="block h-auto w-full" />
+          <img
+            {...responsiveImageProps("/images/about.jpg", "(min-width: 768px) 50vw, 100vw")}
+            alt={language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
+            loading="lazy"
+            decoding="async"
+            className="block h-auto w-full"
+          />
           <span className="micro mt-3 block">
             {language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
           </span>

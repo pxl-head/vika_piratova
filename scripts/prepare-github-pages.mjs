@@ -15,16 +15,75 @@ for (const file of await readdir(assets)) {
 }
 
 const index = new URL("index.html", dist);
+const indexHtml = await readFile(index, "utf8");
 const caseSource = await readFile(new URL("../src/data/cases.ts", import.meta.url), "utf8");
-const caseIds = [...caseSource.matchAll(/\n\s+id: "([^"]+)"/g)].map(([, id]) => id);
-const routes = ["works", "visual-art", "photo-video", "visual", "about", "contacts", ...caseIds.map((id) => `case/${id}`)];
+const caseEntries = [...caseSource.matchAll(/\n\s+id: "([^"]+)"[\s\S]*?\n\s+title: "([^"]+)"/g)].map(
+  ([, id, title]) => ({
+    route: `case/${id}`,
+    title: `${title} — Вика Пиратова`,
+    description: `Проект «${title}» Вики Пиратовой.`,
+  }),
+);
+const routes = [
+  {
+    route: "works",
+    title: "Работы — Вика Пиратова",
+    description: "Портфолио Вики Пиратовой: визуальное искусство, фотопроекты и видео.",
+  },
+  {
+    route: "visual-art",
+    title: "Визуальное искусство — Вика Пиратова",
+    description: "Живопись, иллюстрация и оформление пространств Вики Пиратовой.",
+  },
+  {
+    route: "photo-video",
+    title: "Фото и видео — Вика Пиратова",
+    description: "Концептуальные фотопроекты и видео Вики Пиратовой.",
+  },
+  {
+    route: "visual",
+    title: "Визуал — Вика Пиратова",
+    description: "Непрерывная визуальная лента работ Вики Пиратовой.",
+  },
+  {
+    route: "about",
+    title: "Обо мне — Вика Пиратова",
+    description: "О Вике Пиратовой — фотографе и мультидисциплинарном художнике.",
+  },
+  {
+    route: "contacts",
+    title: "Контакты — Вика Пиратова",
+    description: "Контакты Вики Пиратовой для съёмок, проектов и творческих коллабораций.",
+  },
+  ...caseEntries,
+];
+
+function escapeHtml(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function withMetadata(html, title, description) {
+  return html
+    .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(title)}</title>`)
+    .replace(
+      /<meta name="description" content="[^"]*" \/>/,
+      `<meta name="description" content="${escapeHtml(description)}" />`,
+    );
+}
 
 // Add real directory entry points for known routes so GitHub Pages returns 200
 // for direct links while 404.html remains the fallback for unknown routes.
-for (const route of routes) {
-  const directory = new URL(`${route}/`, dist);
+for (const metadata of routes) {
+  const directory = new URL(`${metadata.route}/`, dist);
   await mkdir(directory, { recursive: true });
-  await copyFile(index, new URL("index.html", directory));
+  await writeFile(
+    new URL("index.html", directory),
+    withMetadata(indexHtml, metadata.title, metadata.description),
+  );
 }
 
 // GitHub Pages serves this file when a visitor opens an unknown SPA route directly.

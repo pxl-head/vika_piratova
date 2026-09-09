@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - run: sudo apt-get update && sudo apt-get install -y imagemagick
       - run: npm ci
       - run: npm run build:pages
       - uses: actions/upload-pages-artifact@v3

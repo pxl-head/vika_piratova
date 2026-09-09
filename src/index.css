@@ -87,3 +87,24 @@
     @apply border-t border-neutral-950;
   }
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .work-card__cover {
+    opacity: 0;
+  }
+
+  .group:hover .work-card__hover {
+    opacity: 1;
+  }
+
+  .work-card__details {
+    transform: translateY(0.5rem);
+    opacity: 0;
+  }
+
+  .group:hover .work-card__details,
+  .group:focus-visible .work-card__details {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

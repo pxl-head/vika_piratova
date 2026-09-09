@@ -9,6 +9,8 @@ lerna-debug.log*
 
 node_modules
 dist
+public/images/responsive/
+src/data/imageMeta.generated.ts
 dist-ssr
 *.local
 

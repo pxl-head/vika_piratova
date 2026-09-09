@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { type Language, useLanguage } from "@/language";
 import SiteCredit from "@/sections/SiteCredit";
+import { responsiveImageProps } from "@/lib/responsiveImage";
 
 const TILES: Record<Language, { to: string; index: string; label: string; sub: string; img: string; alt: string }[]> = {
   ru: [
@@ -61,8 +62,9 @@ export default function HomePage() {
             aria-label={tile.label}
           >
             <img
-              src={tile.img}
+              {...responsiveImageProps(tile.img, "(min-width: 768px) 50vw, 100vw")}
               alt={tile.alt}
+              fetchPriority="high"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
             />
             <div className="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/20" />

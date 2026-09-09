@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { CASES, type Category } from "@/data/cases";
 import { getCaseText } from "@/data/caseTranslations";
 import { type Language, useLanguage } from "@/language";
+import { responsiveImageProps } from "@/lib/responsiveImage";
 
 export type Filter = Category | "all";
 
@@ -27,10 +28,19 @@ const FILTERS: Record<Language, { id: Filter; label: string }[]> = {
 
 export default function WorksGrid({ title = "Работы", note = "Все проекты", initialFilter = "all" }: WorksGridProps) {
   const [filter, setFilter] = useState<Filter>(initialFilter);
+  const [supportsHover, setSupportsHover] = useState(false);
   const { language } = useLanguage();
   const cases = CASES
     .filter((c) => filter === "all" || c.category === filter)
     .sort((a, b) => Number(a.index) - Number(b.index));
+
+  useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const updateSupportsHover = () => setSupportsHover(query.matches);
+    updateSupportsHover();
+    query.addEventListener("change", updateSupportsHover);
+    return () => query.removeEventListener("change", updateSupportsHover);
+  }, []);
 
   return (
     <section id="works" className="border-t border-neutral-950 bg-white">
@@ -77,23 +87,27 @@ export default function WorksGrid({ title = "Работы", note = "Все пр�
                 className="group relative block h-full w-full cursor-pointer overflow-hidden"
               >
                 <img
-                  src={c.cover}
+                  {...responsiveImageProps(c.cover, "(min-width: 1024px) 33vw, 50vw")}
                   alt={c.title}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  decoding="async"
+                  className="work-card__cover absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
                 />
-                <img
-                  src={c.hover}
-                  alt=""
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
+                {supportsHover && (
+                  <img
+                    {...responsiveImageProps(c.hover, "(min-width: 1024px) 33vw, 50vw")}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="work-card__hover absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500"
+                  />
+                )}
 
                 <span className="micro absolute left-4 top-4 z-10 text-white mix-blend-difference">
                   {c.index}
                 </span>
 
-                <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-16 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 md:p-5">
+                <div className="work-card__details absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-16 transition-all duration-500 md:p-5">
                   <p className="micro mb-2 text-white/70">
                     {localized.categoryLabel} — {localized.field}
                   </p>
