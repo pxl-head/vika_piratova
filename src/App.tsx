@@ -53,25 +53,27 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white text-neutral-950">
-      <a
-        href="#main"
-        className="micro sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-neutral-950 focus:px-4 focus:py-3 focus:text-white"
-      >
-        {language === "ru" ? "Перейти к содержимому" : "Skip to content"}
-      </a>
-      <RouteEffects />
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/works" element={<WorksPage />} />
-        <Route path="/visual-art" element={<WorksPage preset="art" />} />
-        <Route path="/photo-video" element={<WorksPage preset="photo" />} />
-        <Route path="/case/:id" element={<CasePage />} />
-        <Route path="/visual" element={<VisualPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <div id="site-content">
+        <a
+          href="#main"
+          className="micro sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-neutral-950 focus:px-4 focus:py-3 focus:text-white"
+        >
+          {language === "ru" ? "Перейти к содержимому" : "Skip to content"}
+        </a>
+        <RouteEffects />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/works" element={<WorksPage />} />
+          <Route path="/visual-art" element={<WorksPage preset="art" />} />
+          <Route path="/photo-video" element={<WorksPage preset="photo" />} />
+          <Route path="/case/:id" element={<CasePage />} />
+          <Route path="/visual" element={<VisualPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
     </div>
   );
 }

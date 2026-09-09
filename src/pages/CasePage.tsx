@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, Navigate, useNavigate, useParams } from "react-router";
+import { Link, Navigate, useParams } from "react-router";
 import { CASES, INSTAGRAM_LINKS } from "@/data/cases";
 import { getCaseText } from "@/data/caseTranslations";
 import PageFooter from "@/sections/PageFooter";
@@ -89,15 +89,8 @@ function BackstageVideo({ src, language }: { src: string; language: "ru" | "en" 
 
 export default function CasePage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { language } = useLanguage();
   const item = CASES.find((c) => c.id === id);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && navigate("/works");
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [navigate]);
 
   useEffect(() => {
     if (item) {
@@ -167,7 +160,7 @@ export default function CasePage() {
         {metaItems.map(({ label, value, isTeam }) => (
           <div key={label} className="bg-white p-4 md:p-6">
             <p className="micro mb-2 text-neutral-500">{label}</p>
-            <p className="whitespace-pre-line text-sm font-medium leading-snug">
+            <p className="whitespace-pre-line text-base font-medium leading-snug">
               {isTeam ? renderTeam(value) : value}
             </p>
           </div>
@@ -181,7 +174,7 @@ export default function CasePage() {
         </h2>
         <div className="space-y-5">
           {localized.description.map((p, i) => (
-            <p key={i} className="max-w-xl text-sm leading-relaxed text-neutral-600">
+            <p key={i} className="max-w-xl text-base leading-relaxed text-neutral-600">
               {p}
             </p>
           ))}
@@ -224,6 +217,44 @@ export default function CasePage() {
           )
         ))}
       </div>
+
+      {/* result */}
+      <section className="bg-neutral-950 px-4 py-16 text-white md:px-8 md:py-24">
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <p className="micro mb-6 text-white/50">{language === "ru" ? "Результат" : "Result"}</p>
+            <p className="display-xl max-w-3xl text-3xl md:text-5xl">{localized.result}</p>
+          </div>
+          {localized.resultFacts.length > 0 && (
+            <ul className="self-end border-t border-white/20">
+              {localized.resultFacts.map((fact) => (
+                <li key={fact} className="border-b border-white/20 py-4 text-base leading-relaxed text-white/75">
+                  {fact}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
+
+      {/* process */}
+      {item.process.length > 0 && (
+        <section className="border-t border-neutral-950 bg-white px-4 py-16 md:px-8 md:py-24">
+          <div className="grid gap-8 md:grid-cols-2">
+            <h2 className="display-xl text-3xl md:text-5xl">
+              {language === "ru" ? "Процесс" : "Process"}
+            </h2>
+            <div className="grid gap-8 sm:grid-cols-2">
+              {item.process.map((shot) => (
+                <figure key={shot.img}>
+                  <img src={shot.img} alt={shot.caption} loading="lazy" className="block h-auto w-full" />
+                  <figcaption className="micro mt-3 text-neutral-500">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* video loop */}
       {item.video && (

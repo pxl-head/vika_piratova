@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# Vika Piratova — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Персональное портфолио визуального художника, фотографа и создателя контента. Сайт построен как монохромная галерея: работы, фотопроекты, видео, Visual feed и контакты.
 
-Currently, two official plugins are available:
+## Авторство
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Этот сайт лично разработан мной с помощью Codex в ChatGPT.
 
-## React Compiler
+## Стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19, TypeScript, Vite, Tailwind CSS, React Router.
+- Статическая SPA без backend; публикация — GitHub Pages через GitHub Actions.
+- Локализация RU/EN с сохранением выбранного языка в браузере.
 
-## Expanding the ESLint configuration
+## Запуск
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Production-сборка:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run build:pages
 ```
+
+## Применённые плагины, MCP и skills
+
+### Плагины и подключённые сервисы
+
+- GitHub MCP — создание и обновление репозитория, синхронизация файлов, проверка коммитов и GitHub Actions.
+- Sites — создание и публикация первоначальной версии сайта, проверка версий, доступа и деплоя.
+
+### MCP-инструменты
+
+- Codebase Memory MCP — архитектура, поиск символов, трассировка зависимостей и проверка покрытия индекса.
+- GitHub MCP Server — работа с репозиторием `pxl-head/vika_piratova` и публикация файлов.
+- Sites MCP connector — чтение проекта, версий, access mode и статуса публикации.
+
+### Использованные skills
+
+- `codebase-memory` — структурный аудит проекта и оценка влияния изменений.
+- `sites-building` — работа с существующим Sites-проектом и подготовка статического сайта.
+- `sites-hosting` — сохранение версий и публикация через Sites.
+
+## Лицензия и материалы
+
+Изображения, видео, тексты и авторские материалы принадлежат соответствующим авторам и используются в рамках портфолио.

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router";
 import WorksGrid, { type Filter } from "@/sections/WorksGrid";
 import PageFooter from "@/sections/PageFooter";
 import type { Category } from "@/data/cases";
@@ -22,7 +21,6 @@ interface WorksPageProps {
 }
 
 export default function WorksPage({ preset }: WorksPageProps) {
-  const navigate = useNavigate();
   const { language } = useLanguage();
   const meta = TITLES[language][preset ?? "all"];
   const initialFilter: Filter = preset ?? "all";
@@ -34,7 +32,6 @@ export default function WorksPage({ preset }: WorksPageProps) {
         title={meta.title}
         note={meta.note}
         initialFilter={initialFilter}
-        onSelectCase={(c) => navigate(`/case/${c.id}`)}
       />
       <PageFooter />
     </main>

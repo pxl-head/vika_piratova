@@ -1,4 +1,4 @@
-import { copyFile, readdir, readFile, writeFile } from "node:fs/promises";
+import { copyFile, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const dist = new URL("../dist/", import.meta.url);
@@ -14,5 +14,18 @@ for (const file of await readdir(assets)) {
   await writeFile(fileURLToPath(path), source.replaceAll('"/images/', `"${base}images/`));
 }
 
-// GitHub Pages serves this file when a visitor opens an SPA route directly.
-await copyFile(new URL("index.html", dist), new URL("404.html", dist));
+const index = new URL("index.html", dist);
+const caseSource = await readFile(new URL("../src/data/cases.ts", import.meta.url), "utf8");
+const caseIds = [...caseSource.matchAll(/\n\s+id: "([^"]+)"/g)].map(([, id]) => id);
+const routes = ["works", "visual-art", "photo-video", "visual", "about", "contacts", ...caseIds.map((id) => `case/${id}`)];
+
+// Add real directory entry points for known routes so GitHub Pages returns 200
+// for direct links while 404.html remains the fallback for unknown routes.
+for (const route of routes) {
+  const directory = new URL(`${route}/`, dist);
+  await mkdir(directory, { recursive: true });
+  await copyFile(index, new URL("index.html", directory));
+}
+
+// GitHub Pages serves this file when a visitor opens an unknown SPA route directly.
+await copyFile(index, new URL("404.html", dist));

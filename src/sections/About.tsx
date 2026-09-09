@@ -33,12 +33,12 @@ export default function About() {
           <h2 className="display-xl text-[clamp(1.5rem,7.5vw,2.25rem)] md:text-[clamp(1.5rem,3.2vw,3rem)]">
             {language === "ru" ? "ФОТОГРАФ & МУЛЬТИДИСЦИПЛИНАРНЫЙ ХУДОЖНИК" : "PHOTOGRAPHER & MULTIDISCIPLINARY ARTIST"}
           </h2>
-          <p className="mt-8 max-w-lg text-sm leading-relaxed text-neutral-600">
+          <p className="mt-8 max-w-lg text-base leading-relaxed text-neutral-600">
             {language === "ru"
               ? "Привет, я Вика Пиратова мне 18 лет. Я люблю творчество и вся моя жизнь связана с ним. В средней школе я закончила ДШИ, а выпустилась я в 11 классе из гимназии при РГУ им. Н.А. Косыгина. Сейчас я продолжаю активно учиться в этой сфере."
               : "Hi, I’m Vika Piratova. Creativity has always been at the core of everything I do. Having completed a classical art school background and specialized studies affiliated with Kosygin Russian State University, I continue to expand my practice across different creative disciplines."}
           </p>
-          <p className="mt-4 max-w-lg text-sm leading-relaxed text-neutral-600">
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-neutral-600">
             {language === "ru"
               ? "В течение своей жизни я собрала вокруг себя невероятно интересных и талантливых людей, которые творят со мной. Мы делаем крутые проекты, коллаборации и развиваемся в разных творческих сферах, дополняя друг друга. Моя жизнь очень насыщенная благодаря творчеству, и я хочу, чтоб мои работы вдохновляли людей."
               : "I thrive on collaboration and have built a strong network of talented creators. Together, we work on ambitious projects, combining our strengths across various mediums. My goal is to create compelling visual work that inspires and connects with people."}

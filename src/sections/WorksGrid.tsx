@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CASES, type CaseItem, type Category } from "@/data/cases";
+import { Link } from "react-router";
+import { CASES, type Category } from "@/data/cases";
 import { getCaseText } from "@/data/caseTranslations";
 import { type Language, useLanguage } from "@/language";
 
@@ -9,7 +10,6 @@ interface WorksGridProps {
   title?: string;
   note?: string;
   initialFilter?: Filter;
-  onSelectCase: (c: CaseItem) => void;
 }
 
 const FILTERS: Record<Language, { id: Filter; label: string }[]> = {
@@ -25,7 +25,7 @@ const FILTERS: Record<Language, { id: Filter; label: string }[]> = {
   ],
 };
 
-export default function WorksGrid({ title = "Работы", note = "Все проекты", initialFilter = "all", onSelectCase }: WorksGridProps) {
+export default function WorksGrid({ title = "Работы", note = "Все проекты", initialFilter = "all" }: WorksGridProps) {
   const [filter, setFilter] = useState<Filter>(initialFilter);
   const { language } = useLanguage();
   const cases = CASES
@@ -70,47 +70,40 @@ export default function WorksGrid({ title = "Работы", note = "Все пр�
         {cases.map((c) => {
           const localized = getCaseText(c, language);
           return (
-            <article
-            key={c.id}
-            role="link"
-            tabIndex={0}
-            aria-label={`${c.title} — ${localized.categoryLabel}`}
-            onClick={() => onSelectCase(c)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onSelectCase(c);
-              }
-            }}
-            className="group relative aspect-[3/4] cursor-pointer overflow-hidden bg-white"
-          >
-            <img
-              src={c.cover}
-              alt={c.title}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-            />
-            <img
-              src={c.hover}
-              alt=""
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
+            <article key={c.id} className="aspect-[3/4] bg-white">
+              <Link
+                to={`/case/${c.id}`}
+                aria-label={`${c.title} — ${localized.categoryLabel}`}
+                className="group relative block h-full w-full cursor-pointer overflow-hidden"
+              >
+                <img
+                  src={c.cover}
+                  alt={c.title}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 group-hover:opacity-0"
+                />
+                <img
+                  src={c.hover}
+                  alt=""
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
 
-            <span className="micro absolute left-4 top-4 z-10 text-white mix-blend-difference">
-              {c.index}
-            </span>
+                <span className="micro absolute left-4 top-4 z-10 text-white mix-blend-difference">
+                  {c.index}
+                </span>
 
-            <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-16 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 md:p-5">
-              <p className="micro mb-2 text-white/70">
-                {localized.categoryLabel} — {localized.field}
-              </p>
-              <h3 className={`font-display text-xl font-semibold leading-tight text-white md:text-2xl ${c.id === "fantasy-of-poison-ll" ? "normal-case" : "uppercase"}`}>
-                {c.title}
-              </h3>
-              <p className="micro mt-2 hidden text-white/60 md:block">{localized.role}</p>
-            </div>
-          </article>
+                <div className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-16 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 md:p-5">
+                  <p className="micro mb-2 text-white/70">
+                    {localized.categoryLabel} — {localized.field}
+                  </p>
+                  <h3 className={`font-display text-xl font-semibold leading-tight text-white md:text-2xl ${c.id === "fantasy-of-poison-ll" ? "normal-case" : "uppercase"}`}>
+                    {c.title}
+                  </h3>
+                  <p className="micro mt-2 hidden text-white/60 md:block">{localized.role}</p>
+                </div>
+              </Link>
+            </article>
           );
         })}
       </div>

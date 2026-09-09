@@ -5,6 +5,8 @@ import { LanguageSwitcher } from "@/i18n";
 import { type Language, useLanguage } from "@/language";
 import SiteCredit from "@/sections/SiteCredit";
 
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 const MENU_ITEMS: Record<Language, { label: string; to: string; note: string }[]> = {
   ru: [
     { label: "Главная", to: "/", note: "Разделённый экран" },
@@ -28,12 +30,23 @@ export default function Header() {
   const isHome = pathname === "/";
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const wasOpenRef = useRef(false);
   const { language } = useLanguage();
   const menuItems = MENU_ITEMS[language];
 
   useEffect(() => {
+    const content = document.getElementById("site-content");
     document.body.style.overflow = open ? "hidden" : "";
+    if (content) {
+      if (open) {
+        content.setAttribute("inert", "");
+        content.setAttribute("aria-hidden", "true");
+      } else {
+        content.removeAttribute("inert");
+        content.removeAttribute("aria-hidden");
+      }
+    }
     if (open) {
       closeButtonRef.current?.focus();
     } else if (wasOpenRef.current) {
@@ -42,13 +55,40 @@ export default function Header() {
     wasOpenRef.current = open;
     return () => {
       document.body.style.overflow = "";
+      content?.removeAttribute("inert");
+      content?.removeAttribute("aria-hidden");
     };
   }, [open]);
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+
+      if (e.key !== "Tab" || !menuRef.current) return;
+
+      const focusable = Array.from(menuRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!menuRef.current.contains(document.activeElement)) {
+        e.preventDefault();
+        (e.shiftKey ? last : first).focus();
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -97,9 +137,11 @@ export default function Header() {
 
       {/* Fullscreen menu */}
       <div
+        ref={menuRef}
         id="site-menu"
         role="dialog"
         aria-modal="true"
+        aria-hidden={!open}
         aria-label={language === "ru" ? "Меню сайта" : "Site menu"}
         className={`fixed inset-0 z-50 bg-neutral-950 text-white transition-all duration-500 ${
           open ? "visible opacity-100" : "invisible opacity-0"
