@@ -18,13 +18,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
       - run: sudo apt-get update && sudo apt-get install -y imagemagick
       - run: npm ci
+      - run: npx playwright install --with-deps --only-shell chromium
+      - run: npm test
       - run: npm run build:pages
       - uses: actions/upload-pages-artifact@v3
         with:

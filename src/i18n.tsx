@@ -4,14 +4,24 @@ import { LanguageContext, type Language, useLanguage } from "@/language";
 const STORAGE_KEY = "vika-piratova-language";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(() =>
-    window.localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "ru",
-  );
+  const { pathname } = useLocation();
+  const [language, setLanguage] = useState<Language>(() => {
+    const queryLanguage = new URLSearchParams(window.location.search).get("lang");
+    if (queryLanguage === "ru" || queryLanguage === "en") return queryLanguage;
+    return window.localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "ru";
+  });
 
   useEffect(() => {
     document.documentElement.lang = language;
     window.localStorage.setItem(STORAGE_KEY, language);
-  }, [language]);
+    const url = new URL(window.location.href);
+    if (language === "en") {
+      url.searchParams.set("lang", "en");
+    } else {
+      url.searchParams.delete("lang");
+    }
+    window.history.replaceState(window.history.state, "", url);
+  }, [language, pathname]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage }}>

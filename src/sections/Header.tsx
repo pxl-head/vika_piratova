@@ -37,6 +37,7 @@ export default function Header() {
 
   useEffect(() => {
     const content = document.getElementById("site-content");
+    let focusTimer = 0;
     document.body.style.overflow = open ? "hidden" : "";
     if (content) {
       if (open) {
@@ -48,12 +49,13 @@ export default function Header() {
       }
     }
     if (open) {
-      closeButtonRef.current?.focus();
+      focusTimer = window.setTimeout(() => closeButtonRef.current?.focus({ preventScroll: true }), 100);
     } else if (wasOpenRef.current) {
       menuButtonRef.current?.focus();
     }
     wasOpenRef.current = open;
     return () => {
+      window.clearTimeout(focusTimer);
       document.body.style.overflow = "";
       content?.removeAttribute("inert");
       content?.removeAttribute("aria-hidden");
@@ -107,7 +109,7 @@ export default function Header() {
           <button
             ref={menuButtonRef}
             onClick={() => setOpen(true)}
-            className="micro flex items-center gap-3"
+            className="micro flex min-h-11 items-center gap-3 px-1"
             aria-label={language === "ru" ? "Открыть меню" : "Open menu"}
             aria-expanded={open}
             aria-controls="site-menu"
@@ -126,10 +128,10 @@ export default function Header() {
             {language === "ru" ? "Вика Пиратова" : "Vika Piratova"}
           </Link>
 
-          <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="micro hidden sm:block">
+          <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="micro hidden min-h-11 items-center px-1 sm:flex">
             {language === "ru" ? "Контакт" : "Contact"}
           </a>
-          <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="micro sm:hidden" aria-label="Telegram">
+          <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="micro inline-flex min-h-11 min-w-11 items-center justify-center sm:hidden" aria-label="Telegram">
             TG
           </a>
         </div>
@@ -149,7 +151,7 @@ export default function Header() {
       >
         <div className="flex h-14 items-center justify-between px-4 md:px-8">
           <span className="micro text-white/50">{language === "ru" ? "Навигация" : "Navigation"}</span>
-          <button ref={closeButtonRef} onClick={() => setOpen(false)} className="micro" aria-label={language === "ru" ? "Закрыть меню" : "Close menu"}>
+          <button ref={closeButtonRef} onClick={() => setOpen(false)} className="micro min-h-11 px-1" aria-label={language === "ru" ? "Закрыть меню" : "Close menu"}>
             {language === "ru" ? "Закрыть" : "Close"} ✕
           </button>
         </div>

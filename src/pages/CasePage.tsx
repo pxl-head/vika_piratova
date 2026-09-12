@@ -196,7 +196,7 @@ export default function CasePage() {
       <div className="relative h-[68vh] overflow-hidden md:h-[78vh]">
         <img
           {...responsiveImageProps(item.cover, "100vw")}
-          alt={item.title}
+          alt={`${item.title} — ${localized.tagline}`}
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -268,7 +268,7 @@ export default function CasePage() {
             >
               <img
                 {...responsiveImageProps(g.src, "(min-width: 768px) 33vw, 50vw")}
-                alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
+                alt={`${item.title}: ${localized.description[0]} — ${i + 1}/${gallery.length}`}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover"
@@ -287,7 +287,7 @@ export default function CasePage() {
                       : "(min-width: 768px) 33vw, 50vw"
                   : "(min-width: 768px) 33vw, 50vw",
               )}
-              alt={`${item.title} — ${language === "ru" ? "кадр" : "image"} ${i + 1}`}
+              alt={`${item.title}: ${localized.description[0]} — ${i + 1}/${gallery.length}`}
               loading="lazy"
               decoding="async"
               className={`block h-auto w-full break-inside-avoid ${twinsGallery && g.wide ? "col-span-2" : ""} ${compactGallery ? desktopGalleryItemWidth : ""}`}

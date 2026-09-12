@@ -7,9 +7,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:pages": "npm run images:generate && tsc -b && vite build --base=/vika_piratova/ && node scripts/prepare-github-pages.mjs",
+    "build:pages": "npm run images:generate && tsc -b && vite build --base=/vika_piratova/ && node scripts/prepare-github-pages.mjs && npm run pages:verify",
     "images:generate": "node scripts/generate-responsive-images.mjs",
     "lint": "eslint .",
+    "pages:verify": "node scripts/verify-pages.mjs",
+    "test": "npm run test:content && npm run test:e2e",
+    "test:content": "node --test tests/content.test.mjs",
+    "test:e2e": "npm run images:generate && playwright test",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

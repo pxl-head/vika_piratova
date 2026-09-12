@@ -50,7 +50,7 @@ export default function WorksGrid({ title = "Работы", note = "Все пр�
             <span className="micro">{language === "ru" ? "Портфолио" : "Portfolio"}</span>
             <span className="micro text-neutral-500">( {note} )</span>
           </div>
-          <h2 className="display-xl text-5xl md:text-7xl">{title}</h2>
+          <h1 className="display-xl text-5xl md:text-7xl">{title}</h1>
         </div>
 
         <div className="flex flex-wrap items-center gap-2" role="group" aria-label={language === "ru" ? "Фильтр проектов" : "Project filter"}>

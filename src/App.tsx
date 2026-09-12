@@ -17,6 +17,17 @@ interface RouteMetadata {
   description: string;
 }
 
+const SITE_URL = "https://pxl-head.github.io/vika_piratova";
+
+function updateMeta(selector: string, content: string) {
+  document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", content);
+}
+
+function routeUrl(pathname: string) {
+  const normalizedPathname = normalizePathname(pathname);
+  return normalizedPathname === "/" ? `${SITE_URL}/` : `${SITE_URL}${normalizedPathname}/`;
+}
+
 const ROUTE_METADATA: Record<Language, Record<string, RouteMetadata>> = {
   ru: {
     "/": {
@@ -106,9 +117,22 @@ function RouteEffects() {
 
   useEffect(() => {
     const metadata = getRouteMetadata(pathname, language);
+    const baseUrl = routeUrl(pathname);
+    const canonicalUrl = language === "en" ? `${baseUrl}?lang=en` : baseUrl;
     window.scrollTo(0, 0);
     document.title = metadata.title;
-    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute("content", metadata.description);
+    updateMeta('meta[name="description"]', metadata.description);
+    updateMeta('meta[property="og:title"]', metadata.title);
+    updateMeta('meta[property="og:description"]', metadata.description);
+    updateMeta('meta[property="og:url"]', canonicalUrl);
+    updateMeta('meta[property="og:locale"]', language === "ru" ? "ru_RU" : "en_US");
+    updateMeta('meta[property="og:locale:alternate"]', language === "ru" ? "en_US" : "ru_RU");
+    updateMeta('meta[name="twitter:title"]', metadata.title);
+    updateMeta('meta[name="twitter:description"]', metadata.description);
+    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute("href", canonicalUrl);
+    document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="ru"]')?.setAttribute("href", baseUrl);
+    document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="en"]')?.setAttribute("href", `${baseUrl}?lang=en`);
+    document.querySelector<HTMLLinkElement>('link[rel="alternate"][hreflang="x-default"]')?.setAttribute("href", baseUrl);
   }, [language, pathname]);
   return null;
 }

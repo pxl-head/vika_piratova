@@ -31,8 +31,8 @@ export default function VisualPage() {
             {...responsiveImageProps(src, "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw")}
             alt={
               language === "ru"
-                ? `Работа ${i + 1} из ленты «Визуал»`
-                : `Work ${i + 1} from the Visual feed`
+                ? `Экспериментальная мода, портрет и художественная съёмка Вики Пиратовой — ${i + 1} из ${VISUAL_IMAGES.length}`
+                : `Experimental fashion, portrait and art photography by Vika Piratova — ${i + 1} of ${VISUAL_IMAGES.length}`
             }
             loading="lazy"
             decoding="async"

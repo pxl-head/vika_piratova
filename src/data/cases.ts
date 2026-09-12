@@ -208,7 +208,7 @@ export const CASES: CaseItem[] = [
     cover: `${fantasy}/Обложка 1.webp`,
     hover: `${fantasy}/Обложка 2.webp`,
     tagline: "Fantasy Of Poison",
-    description: ["Серия кадров из проекта Fantasy Of Poison."],
+    description: ["Тёмная фэнтези‑история соединяет всадницу, лошадь и меч в едином кинематографичном мире. Вика отвечала за арт‑дирекшн, образ и драматургию серии."],
     process: [],
     gallery: [
       { src: `${fantasy}/Обложка 1.webp` },
@@ -222,8 +222,8 @@ export const CASES: CaseItem[] = [
       { src: `${fantasy}/IMG_3171.webp` },
       { src: `${fantasy}/IMG_3172.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Всадница, лошадь и реквизит стали героями цельной визуальной истории.",
+    resultFacts: ["Арт‑дирекшн съёмки с лошадью и авторским реквизитом"],
   },
   {
     id: "mermaids",
@@ -244,7 +244,7 @@ export const CASES: CaseItem[] = [
     cover: `${mermaids}/Обложка 1.webp`,
     hover: `${mermaids}/Обложка 2.webp`,
     tagline: "MERMAIDS",
-    description: ["Серия кадров из проекта MERMAIDS."],
+    description: ["Холодный свет, влажные фактуры и детали из ракушек превращают портрет в образ современной русалки. Серия построена на близких планах и почти невесомой голубой палитре."],
     process: [],
     gallery: [
       { src: `${mermaids}/Обложка 1.webp` },
@@ -256,8 +256,8 @@ export const CASES: CaseItem[] = [
       { src: `${mermaids}/IMG_3892.webp` },
       { src: `${mermaids}/IMG_3893.webp` },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Портретная съёмка получила узнаваемый подводный мир без буквальной декорации.",
+    resultFacts: ["Арт‑дирекшн, съёмка и образ с морскими деталями"],
   },
   {
     id: "fantasy-of-poison-ll",
@@ -283,7 +283,7 @@ export const CASES: CaseItem[] = [
     cover: `${fantasyII}/Обложка 1.webp`,
     hover: `${fantasyII}/Обложка 2.webp`,
     tagline: "FANTASY OF POISON II",
-    description: ["Серия кадров из проекта Fantasy Of Poison."],
+    description: ["Продолжение Fantasy Of Poison расширяет историю до ансамбля персонажей. Розовые и чёрные образы, коллажная композиция и закулисное видео связывают серию с первой частью."],
     process: [],
     gallery: [
       { src: `${fantasyII}/Обложка 1.webp` },
@@ -296,8 +296,8 @@ export const CASES: CaseItem[] = [
       { src: `${fantasyII}/IMG_3310.webp` },
       { src: `${fantasyII}/_MG_8994.webp` },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Вторая глава превратила исходную идею в коллективную модную историю.",
+    resultFacts: ["Арт‑дирекшн ансамблевой съёмки и backstage‑видео"],
     video: `${fantasyII}/backstage.mp4`,
   },
   {
@@ -319,7 +319,7 @@ export const CASES: CaseItem[] = [
     cover: `${psycho}/_MG_0193.webp`,
     hover: `${psycho}/_MG_0097.webp`,
     tagline: "PSYCHO",
-    description: ["Серия кадров из проекта PSYCHO."],
+    description: ["Размытое движение, холодная ванная и фрагменты тела создают ощущение тревоги и потери контроля. Камера работает не как наблюдатель, а как часть психологического состояния героя."],
     process: [],
     gallery: [
       { src: `${psycho}/_MG_0193.webp` },
@@ -332,8 +332,8 @@ export const CASES: CaseItem[] = [
       { src: `${psycho}/_MG_0208.webp`, wide: true },
       { src: `${psycho}/_MG_0247.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Серия удерживает напряжение между документальным кадром и сценой из триллера.",
+    resultFacts: ["Авторская съёмка с намеренным смазом и холодным светом"],
   },
   {
     id: "painted-dolls",
@@ -354,7 +354,7 @@ export const CASES: CaseItem[] = [
     cover: `${paintedDolls}/Обложка 1.webp`,
     hover: `${paintedDolls}/Обложка 2.webp`,
     tagline: "PAINTED DOLLS",
-    description: ["Серия кадров из проекта PAINTED DOLLS."],
+    description: ["Грим, нити и полупрозрачные слои превращают лицо модели в поверхность нарисованной куклы. Жёсткие крупные планы подчёркивают хрупкость и искусственность образа."],
     process: [],
     gallery: [
       { src: `${paintedDolls}/Обложка 1.webp` },
@@ -366,8 +366,8 @@ export const CASES: CaseItem[] = [
       { src: `${paintedDolls}/IMG_5804.webp`, wide: true },
       { src: `${paintedDolls}/IMG_5809.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Портретная серия балансирует между живым человеком и рукотворным объектом.",
+    resultFacts: ["Фотография грима и многослойной стилизации"],
   },
   {
     id: "texture",
@@ -397,7 +397,7 @@ export const CASES: CaseItem[] = [
     cover: `${texture}/Обложка 1.webp`,
     hover: `${texture}/Обложка 2.webp`,
     tagline: "TEXTURE",
-    description: ["Серия кадров из проекта TEXTURE."],
+    description: ["Проект исследует, как ткань, кожа, макияж и направленный свет меняют восприятие тела. Общие планы чередуются с деталями, чтобы материал стал главным персонажем серии."],
     process: [],
     gallery: [
       { src: `${texture}/_MG_9691.webp`, wide: true },
@@ -421,8 +421,8 @@ export const CASES: CaseItem[] = [
       { src: `${texture}/_MG_9931.webp`, wide: true },
       { src: `${texture}/_MG_9500.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Разные дизайнерские образы объединены общей логикой фактуры и света.",
+    resultFacts: ["20 кадров · 4 модели · совместная работа с дизайнерами"],
   },
   {
     id: "cake-or-fake",
@@ -444,7 +444,7 @@ export const CASES: CaseItem[] = [
     cover: `${cakeOrFake}/Обложка 1.webp`,
     hover: `${cakeOrFake}/Обложка 2.webp`,
     tagline: "CAKE OR FAKE",
-    description: ["Серия кадров из проекта CAKE OR FAKE."],
+    description: ["Декоративный грим собирает лицо как кондитерский объект и буквально делит портрет на две реальности. Вика разработала образ и стилизацию для съёмки."],
     process: [],
     gallery: [
       { src: `${cakeOrFake}/Обложка 1.webp` },
@@ -456,8 +456,8 @@ export const CASES: CaseItem[] = [
       { src: `${cakeOrFake}/IMG_8285.webp` },
       { src: `${cakeOrFake}/IMG_7510.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Игра между съедобным и настоящим превратилась в графичный модный портрет.",
+    resultFacts: ["Образ, стилизация и работа с предметным гримом"],
   },
   {
     id: "tokyo-style",
@@ -478,15 +478,15 @@ export const CASES: CaseItem[] = [
     cover: `${tokyoStyle}/Обложка 1.webp`,
     hover: `${tokyoStyle}/Обложка 2.webp`,
     tagline: "TOKYO STYLE",
-    description: ["Серия кадров из проекта TOKYO STYLE."],
+    description: ["Графичный силуэт, профиль и красный круг отсылают к плакатной эстетике Токио. Три кадра собраны как короткая законченная редакционная серия."],
     process: [],
     gallery: [
       { src: `${tokyoStyle}/Обложка 1.webp`, wide: true },
       { src: `${tokyoStyle}/Обложка 2.webp`, wide: true },
       { src: `${tokyoStyle}/IMG_0287.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Минимальная серия работает как цельный визуальный плакат.",
+    resultFacts: ["3 кадра · авторская фотография и композиция"],
   },
   {
     id: "feathers",
@@ -512,7 +512,7 @@ export const CASES: CaseItem[] = [
     cover: `${feathers}/Обложка 1.webp`,
     hover: `${feathers}/Обложка 2.webp`,
     tagline: "FEATHERS",
-    description: ["Серия кадров из проекта FEATHERS."],
+    description: ["Театральный костюм, перья и насыщенный цвет формируют персонажа на границе модной съёмки и сценического портрета. Серия создана в диалоге фотографии, дизайна и видео."],
     process: [],
     gallery: [
       { src: `${feathers}/Обложка 1.webp` },
@@ -526,8 +526,8 @@ export const CASES: CaseItem[] = [
       { src: `${feathers}/IMG_4271.webp` },
       { src: `${feathers}/IMG_4272.webp` },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Фотографии и backstage раскрывают образ как законченную сценическую историю.",
+    resultFacts: ["Фотография, дизайн и видео в едином проекте"],
     video: `${feathers}/backstage.mp4`,
   },
   {
@@ -552,7 +552,7 @@ export const CASES: CaseItem[] = [
     cover: `${antagonism}/Обложка 1.webp`,
     hover: `${antagonism}/Обложка 2.webp`,
     tagline: "ANTAGONISM",
-    description: ["Серия кадров из проекта ANTAGONISM."],
+    description: ["Чёрный и белый образы сталкиваются в тесном пространстве, превращая позы и движение в конфликт двух сил. Контраст костюмов задаёт ритм всей серии."],
     process: [],
     gallery: [
       { src: `${antagonism}/Обложка 1.webp` },
@@ -568,8 +568,8 @@ export const CASES: CaseItem[] = [
       { src: `${antagonism}/_MG_7707.webp` },
       { src: `${antagonism}/_MG_7735.webp` },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Парная съёмка передаёт противостояние через цвет, пластику и монтаж кадров.",
+    resultFacts: ["Фото и видео · две модели · авторская съёмка"],
     video: `${antagonism}/backstage.mp4`,
   },
   {
@@ -590,7 +590,7 @@ export const CASES: CaseItem[] = [
     cover: `${girlishDream}/Обложка 1.webp`,
     hover: `${girlishDream}/Обложка 2.webp`,
     tagline: "GIRLISH DREAM",
-    description: ["Серия кадров из проекта GIRLISH DREAM."],
+    description: ["Блёстки, мягкий свет и предельно близкая камера собирают личный, почти дневниковый образ. Серия говорит о девичьей мечте без глянцевой дистанции."],
     process: [],
     gallery: [
       { src: `${girlishDream}/Обложка 1.webp` },
@@ -604,8 +604,8 @@ export const CASES: CaseItem[] = [
       { src: `${girlishDream}/IMG_4281.webp` },
       { src: `${girlishDream}/IMG_4282.webp` },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Интимные портреты складываются в нежную и немного странную визуальную последовательность.",
+    resultFacts: ["10 кадров · авторская портретная съёмка"],
   },
   {
     id: "twins",
@@ -624,7 +624,7 @@ export const CASES: CaseItem[] = [
     cover: `${twins}/IMG_4300.webp`,
     hover: `${twins}/IMG_4303.webp`,
     tagline: "TWINS",
-    description: ["Серия кадров из проекта TWINS."],
+    description: ["Два героя и контрастный макияж исследуют сходство, различие и смену идентичности. Крупные планы выстраивают диалог между лицами как между отражениями."],
     process: [],
     gallery: [
       { src: `${twins}/IMG_4300.webp` },
@@ -633,7 +633,7 @@ export const CASES: CaseItem[] = [
       { src: `${twins}/IMG_4303.webp` },
       { src: `${twins}/IMG_4304.webp`, wide: true },
     ],
-    result: "Фотопроект собран в отдельную визуальную историю.",
-    resultFacts: ["Полная серия кадров доступна в галерее"],
+    result: "Пять портретов соединены в компактную историю о двойственности.",
+    resultFacts: ["Парный портрет · 5 кадров · авторская фотография"],
   },
 ];

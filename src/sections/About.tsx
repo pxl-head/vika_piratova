@@ -37,17 +37,17 @@ export default function About() {
         </div>
 
         <div className="min-w-0">
-          <h2 className="display-xl text-[clamp(1.5rem,7.5vw,2.25rem)] md:text-[clamp(1.5rem,3.2vw,3rem)]">
+          <h1 className="display-xl text-[clamp(1.5rem,7.5vw,2.25rem)] md:text-[clamp(1.5rem,3.2vw,3rem)]">
             {language === "ru" ? "ФОТОГРАФ & МУЛЬТИДИСЦИПЛИНАРНЫЙ ХУДОЖНИК" : "PHOTOGRAPHER & MULTIDISCIPLINARY ARTIST"}
-          </h2>
+          </h1>
           <p className="mt-8 max-w-lg text-base leading-relaxed text-neutral-600">
             {language === "ru"
-              ? "Привет, я Вика Пиратова мне 18 лет. Я люблю творчество и вся моя жизнь связана с ним. В средней школе я закончила ДШИ, а выпустилась я в 11 классе из гимназии при РГУ им. Н.А. Косыгина. Сейчас я продолжаю активно учиться в этой сфере."
+              ? "Привет, я Вика Пиратова. Творчество всегда было центром моей жизни. Я окончила детскую школу искусств и гимназию при РГУ им. А. Н. Косыгина, а сейчас продолжаю развивать практику в фотографии, живописи и арт‑дирекшне."
               : "Hi, I’m Vika Piratova. Creativity has always been at the core of everything I do. Having completed a classical art school background and specialized studies affiliated with Kosygin Russian State University, I continue to expand my practice across different creative disciplines."}
           </p>
           <p className="mt-4 max-w-lg text-base leading-relaxed text-neutral-600">
             {language === "ru"
-              ? "В течение своей жизни я собрала вокруг себя невероятно интересных и талантливых людей, которые творят со мной. Мы делаем крутые проекты, коллаборации и развиваемся в разных творческих сферах, дополняя друг друга. Моя жизнь очень насыщенная благодаря творчеству, и я хочу, чтоб мои работы вдохновляли людей."
+              ? "Вокруг меня сложилось сообщество талантливых людей, с которыми мы создаём проекты и коллаборации на стыке разных творческих направлений. Мне важно соединять наши сильные стороны и делать визуальные истории, которые вдохновляют и остаются в памяти."
               : "I thrive on collaboration and have built a strong network of talented creators. Together, we work on ambitious projects, combining our strengths across various mediums. My goal is to create compelling visual work that inspires and connects with people."}
           </p>
         </div>
