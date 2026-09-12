@@ -183,7 +183,7 @@ export default function CasePage() {
   return (
     <main id="main" className="bg-white pt-14">
       {/* top bar */}
-      <div className="sticky top-14 z-20 flex h-14 items-center justify-between border-b border-neutral-950 bg-white px-4 md:px-8">
+      <div className="sticky top-14 z-20 flex h-14 items-center justify-between border-b border-neutral-950/10 bg-white/75 px-4 backdrop-blur-xl md:px-8">
         <Link to="/works" className="micro hover:text-neutral-500">
           ← {language === "ru" ? "Все работы" : "All works"}
         </Link>
