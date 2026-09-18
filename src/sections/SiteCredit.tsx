@@ -1,4 +1,4 @@
-const PXL_HEAD_SITE_URL = "https://t.me/pxl_head";
+const PXL_HEAD_SITE_URL = "https://pxl-head.github.io/pxl-head-portfolio/?v=6baac57#photo";
 
 interface SiteCreditProps {
   className?: string;
