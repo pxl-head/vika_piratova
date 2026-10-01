@@ -1,59 +1,59 @@
 # Vika Piratova — Portfolio
 
-Портфолио визуального художника, фотографа и создателя контента с отдельными страницами кейсов, галереями и Visual feed, созданное лично с помощью Codex в ChatGPT.
+A portfolio for visual artist, photographer and content creator Vika Piratova, with dedicated project pages, galleries and a Visual feed. I designed and built the website myself with Codex in ChatGPT.
 
-## Особенности
+## Features
 
-- Отдельные страницы проектов с описаниями, обложками и естественными пропорциями изображений.
-- Разделы с работами, фотопроектами, видео, Visual feed и контактами.
-- Монохромный редакционный интерфейс, в котором главное место занимают изображения.
-- Русская и английская локализация с сохранением выбранного языка в браузере.
-- Адаптивная навигация и галереи для компьютеров и мобильных устройств.
-- Статическая SPA без backend, опубликованная через GitHub Pages.
+- Individual project pages with descriptions, cover images and photographs shown in their original proportions.
+- Sections for selected work, photography projects, video, the Visual feed and contact details.
+- A monochrome editorial interface that gives images centre stage.
+- Russian and English versions, with the language preference saved in the browser.
+- Responsive navigation and galleries for desktop and mobile.
+- A static single-page application with no backend, published through GitHub Pages.
 
-## Технологии
+## Technology
 
-React 19, TypeScript, Vite, Tailwind CSS и React Router.
+React 19, TypeScript, Vite, Tailwind CSS and React Router.
 
-## Сайт
+## Live website
 
-https://pxl-head.github.io/vika_piratova/
+[View the portfolio](https://pxl-head.github.io/vika_piratova/).
 
-## Локальная разработка
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Production-сборка и сборка для GitHub Pages:
+Create the production build or the GitHub Pages build:
 
 ```bash
 npm run build
 npm run build:pages
 ```
 
-Проверка качества:
+Run the quality check:
 
 ```bash
 npm run lint
 ```
 
-## Публикация
+## Deployment
 
-Сайт публикуется в GitHub Pages через GitHub Actions. Для работы маршрутов используются `BrowserRouter` с `BASE_URL` и SPA fallback `404.html`.
+GitHub Actions publishes the site to GitHub Pages. Routing uses `BrowserRouter` with `BASE_URL` and a `404.html` fallback for the single-page application.
 
-## Авторство
+## Authorship
 
-Сайт лично разработан мной с помощью Codex в ChatGPT.
+I designed and built this website myself with Codex in ChatGPT.
 
-## Применённые инструменты
+## Tools used
 
-- **Codebase Memory MCP** — анализ архитектуры, поиск символов и проверка влияния изменений.
-- **GitHub MCP Server** — синхронизация файлов, проверка коммитов и GitHub Actions.
-- **Sites** — создание и публикация первоначальной версии сайта.
-- **codebase-memory**, **sites-building** и **sites-hosting** — аудит, сборка и публикация проекта.
+- **Codebase Memory MCP** — architecture analysis, symbol lookup and assessment of how changes affect the project.
+- **GitHub MCP Server** — file synchronisation, commit verification and GitHub Actions checks.
+- **Sites** — creation and publication of the initial website.
+- **codebase-memory**, **sites-building** and **sites-hosting** — project audits, builds and deployment.
 
-## Лицензия и материалы
+## Rights and materials
 
-Изображения, видео, тексты и авторские материалы принадлежат соответствующим авторам и используются в рамках портфолио.
+Images, videos, texts and other original materials belong to their respective creators and are presented as part of this portfolio.
